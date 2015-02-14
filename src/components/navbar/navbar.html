@@ -1,21 +1,36 @@
-<nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
-      </a>
+<div class="navbar-wrapper">
+
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#/">
+                    University Radio York
+                  </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a ng-href="#/schedule">Schedule</a></li>
+                        <li class="dropdown" dropdown>
+                            <a href class="dropdown-toggle" dropdown-toggle>Teams <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ng-href="#">News</a></li>
+                                <li><a ng-href="#">Speech</a></li>
+                                <li><a ng-href="#">Music</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-href="#">Enineering</a></li>
+                                <li><a ng-href="#">Computing</a></li>
+                                <li><a ng-href="#">Marketing</a></li>
+                            </ul>
+                        </li>
+                        <li><a ng-href="#">Get Involved</a></li>
+                        <li><a ng-href="#">MyURY</a></li>
+                        <li><a ng-href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-      <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>Current date: {{ date | date:'yyyy-MM-dd' }}</li>
-      </ul>
-    </div>
-  </div>
-</nav>
+</div>

@@ -1,16 +1,52 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+
+@import '../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables';
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+
+    /* Flip around the padding for proper display in narrow viewports */
+    > .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .navbar {
+        padding-right: 15px;
+        padding-left: 15px;
+
+        .container {
+            width: auto;
+        }
+
+    }
+
+    @media screen and (min-width: $screen-sm-min) {
+        margin-top: 20px;
+
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        .navbar {
+            padding-right: 0;
+            padding-left: 0;
+            /* The navbar becomes detached from the top, so we round the corners */
+            border-radius: 4px;
+        }
+    }
+}
+/* Move Jumbotron down from Navbar */
+.jumbotron {
+    padding-top: 100px;
 }
 
-.thumbnail {
-  height: 200px;
-
-  img.pull-right {
-    width: 50px;
-  }
-}
 // injector
 // endinjector
