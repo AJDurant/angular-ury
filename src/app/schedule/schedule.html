@@ -1,9 +1,23 @@
+<link rel="import" href="../components/polymer/schedule-item.html">
+<link rel="import" href="../components/polymer/schedule-day.html">
+<link rel="import" href="../components/polymer/schedule-week.html">
+
 <div class="container">
 
     <div class="page-header">
         <h1>Schedule <small>Week View</small></h1>
     </div>
 
-
+    <schedule-week>
+        <schedule-day ng-repeat="day in week" day="{{day.name}}">
+            <schedule-item ng-repeat="item in day.shows" duration="{{item.duration}}">
+                <h1 class="show-time"></h1>
+                <h2 class="show-title"><a href="">{{item.title}}</a></h2>
+                <p class="show-desc">{{item.description}}</p>
+                <img class="show-img">
+                <span class="show-brand">{{item.brand}}</span>
+            </schedule-item>
+        </schedule-day>
+    </schedule-week>
 
 </div>

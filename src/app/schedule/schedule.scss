@@ -1,0 +1,16 @@
+
+schedule-item[max-width~="500px"] {
+    min-height: 60px;
+    padding: 5px;
+}
+
+schedule-item[max-width~="500px"] {
+    .show-time, .show-desc, .show-img, .show-brand {
+        display: none;
+    }
+}
+
+schedule-item[max-width~="500px"] .show-title {
+    margin-top: 5px;
+    font-size: 20px;
+}

@@ -1,0 +1,26 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="schedule-day" attributes="day">
+  <template>
+    <style>
+    :host {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 0;
+    }
+
+    ::content schedule-item {
+        margin-bottom: 0;
+        border-bottom: 1px solid;
+    }
+
+    </style>
+    <h2>{{day}}</h2>
+
+    <content select="schedule-item"></content>
+
+  </template>
+  <script>
+  Polymer({});
+  </script>
+</polymer-element>
