@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ury')
-    .controller('ScheduleCtrl', ['$scope', 'Status',
-        function ($scope, Status) {
+    .controller('ScheduleCtrl', ['$scope',
+        function ($scope) {
 
             $scope.week = [
                 {

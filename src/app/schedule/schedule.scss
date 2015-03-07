@@ -1,16 +1,78 @@
 
-schedule-item[max-width~="500px"] {
-    min-height: 60px;
-    padding: 5px;
+.schedule-week {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
 }
 
-schedule-item[max-width~="500px"] {
-    .show-time, .show-desc, .show-img, .show-brand {
-        display: none;
+.schedule-day {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+
+    schedule-item {
+        margin-bottom: 0;
+        border-bottom: 1px solid;
     }
 }
 
-schedule-item[max-width~="500px"] .show-title {
-    margin-top: 5px;
-    font-size: 20px;
+schedule-item {
+    position: relative;
+    background-color: #eeeeee;
+    overflow: hidden;
+    min-height: 120px;
+    padding-left: 120px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+
+    .show-item {
+        padding-left: 10px;
+    }
+
+    h1 {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        margin: 0;
+        font-size: 1.5em;
+        opacity: .8;
+    }
+    span {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        font-size: 2em;
+        line-height: 1em;
+        opacity: .1;
+        padding: 10px;
+        margin: 0;
+    }
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        line-height: 120px;
+        min-height: 120px;
+        width: 120px;
+        text-align: center;
+    }
 }
+
+
+
+schedule-item[max-width~="500px"] {
+    min-height: 60px;
+    padding: 5px;
+
+    .show-time, .show-desc, .show-img, .show-brand {
+        display: none;
+    }
+    .show-title {
+        margin-top: 5px;
+        font-size: 20px;
+    }
+}
+
