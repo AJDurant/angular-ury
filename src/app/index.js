@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap'])
-    .config(function ($routeProvider) {
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'app/main/main.html',
@@ -22,7 +22,8 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
             .otherwise({
                 redirectTo: '/'
             });
-    })
+        $locationProvider.html5Mode(true).hashPrefix('!');
+    }])
     .service('onAir', function () {
         var serviceMembers = {
             status: false
