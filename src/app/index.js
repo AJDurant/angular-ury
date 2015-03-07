@@ -16,13 +16,17 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 controller: 'TeamCtrl'
             })
             .when('/getinvolved', {
-                templateUrl: 'app/getinvolved/getinvolved.html'
+                templateUrl: 'app/getinvolved/getinvolved.html',
+                controller: 'GetInvolvedCtrl'
             })
             .otherwise({
                 redirectTo: '/'
             });
     })
-    .value('Status', {
-        onAir: false,   // Global status for feature control across controllers
-    })
+    .service('onAir', function () {
+        var serviceMembers = {
+            status: false
+        };
+        return serviceMembers;
+    }) // Global status for feature control across controllers
 ;
