@@ -4,12 +4,15 @@
         <h1>{{team.name}}</h1>
     </div>
 
-    <p>{{team.description}}</p>
-
-    <h2>Team Members</h2>
-    <dl>
-        <dt ng-repeat-start="officer in team.officers | filter:{position: {status:'c', type:'!m'}} | orderBy: ['position.ordering', 'User.fname']">{{officer.position.name}}</dt>
-        <dd ng-repeat-end>{{officer.User.fname}} {{officer.User.sname}}</dd>
-    </dl>
+    <div class="col-md-4">
+        <h2>Team Members</h2>
+        <dl>
+            <dt ng-repeat-start="officer in team.officers | filter:{position: {status:'c', type:'!m'}} | orderBy: ['position.ordering', 'User.fname']">{{officer.position.name}}</dt>
+            <dd ng-repeat-end>{{officer.User.fname}} {{officer.User.sname}}</dd>
+        </dl>
+    </div>
+    <div class="col-md-8">
+        <p>{{team.description}}</p>
+    </div>
 
 </div>
