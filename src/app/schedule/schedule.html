@@ -7,9 +7,7 @@
     <div class="schedule-week">
         <div class="schedule-day" ng-repeat="day in week">
             <h2>{{day.name}}</h2>
-            <schedule-item ng-repeat="item in day.shows" show="item">
-
-            </schedule-item>
+            <schedule-item ng-repeat="item in day.shows" show="item"></schedule-item>
         </div>
     </div>
 
