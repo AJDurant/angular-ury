@@ -7,7 +7,7 @@
             <div ng-if="!onAir.status">No Message box</div>
         </div>
         <div class="col-md-9" style="height: 305px">
-            <carousel interval="myInterval">
+            <carousel interval="myInterval" disable-animation="true">
                 <slide ng-repeat="slide in slides" active="slide.active">
                     <img ng-src="{{slide.image}}" style="margin:auto;">
                 </slide>

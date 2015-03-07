@@ -23,11 +23,21 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 redirectTo: '/'
             });
         $locationProvider.html5Mode(true).hashPrefix('!');
-    }])
+    }]) // Global status for feature control across controllers
     .service('onAir', function () {
         var serviceMembers = {
             status: false
         };
         return serviceMembers;
-    }) // Global status for feature control across controllers
+    }) // https://github.com/angular-ui/bootstrap/issues/1350#issuecomment-34595075
+    .directive('disableAnimation', function($animate){
+        return {
+            restrict: 'A',
+            link: function($scope, $element, $attrs){
+                $attrs.$observe('disableAnimation', function(value){
+                    $animate.enabled(!value, $element);
+                });
+            }
+        };
+    })
 ;
