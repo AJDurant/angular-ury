@@ -1,0 +1,131 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1>Get Involved</h1>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Radio By Students, For Students</h2>
+        <p>Want to help York make incredible Award Winning radio? Want to join one of the best, largest and most diverse societies university has to offer? Whether you to hear your voice played out on the airwaves, break the biggest news stories as they happen, play with the state-of-the-art studios and computer systems, or just plain have fun, then URY is the place for you.</p>
+
+        <h2>What Can I Do?</h2>
+        <p>Of course, everyone wants to be on the radio! Presenting is as easy as baking a cake (disclaimer: I can't bake cakes) and you don't have to sign up at Freshers' Fair or at the start of a term to get your very own show! Take a look at our <a ng-href="#/schedule">schedule</a>. If you can see a gap, there's no reason you couldn't fill it.</p>
+        <p>As well as just presenting, there are several teams of students that make content and keep URY running.</p>
+
+        <h2>Come and See Us</h2>
+        <p>We're always out and about on campus, especially during Freshers':</p>
+        <ul>
+            <li>See or add <a href="http://goo.gl/5APK7Q" target="_blank" title="The URY calendar">our Google calendar</a> for all our events</li>
+            <li>Almost any time at URY's Station</li>
+            <li>Alternatively, you can email <a href="mailto:getinvolved@ury.org.uk">getinvolved@ury.org.uk</a> to get in touch</li>
+        </ul>
+
+        <h2>How Do I Join?</h2>
+        <p>If you're ready to sign up right now, you can fill in the form below to sign up to our mailing list and computer system. It's instant and of course there's no commitment to do anything.</p>
+        <p>You can also come and visit our station in Vanbrugh College, where there'll almost always be someone there to talk to you and get you set up.</p>
+    </div>
+    <div class="col-md-6">
+
+        <h2>Sign Up</h2>
+        <form>
+            <div class="row">
+                <fieldset id="getinvolved-personal-details" class="col-md-6">
+                    <legend>I'm…</legend>
+
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input class="form-control" type="text" name="first-name" id="first-name" ng-model="user.fname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input class="form-control" type="text" name="last-name" id="last-name" ng-model="user.sname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">York Email</label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="email" id="email" placeholder="abc123" ng-model="user.eduroam" required>
+                            <span class="input-group-addon">@york.ac.uk</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input class="form-control" type="text" name="phone" id="phone" ng-model="user.phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" name="gender" id="gender" ng-model="user.sex">
+                            <option value="o">Other</option>
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="college">College</label>
+                        <select class="form-control" name="college" id="college" ng-model="user.collegeid">
+                            <option value="10">Unknown</option>
+                            <option value="1">Alcuin</option>
+                            <option value="11">Constantine</option>
+                            <option value="2">Derwent</option>
+                            <option value="3">Goodricke</option>
+                            <option value="4">Halifax</option>
+                            <option value="5">James</option>
+                            <option value="6">Langwith</option>
+                            <option value="7">Vanbrugh</option>
+                            <option value="8">Wentworth</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset id="getinvolved-interest" class="col-md-6">
+                    <legend>I'm interested in the…</legend>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-news" value="24"> News Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-speech" value="28"> Speech Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-music" value="29"> Music Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-production" value="26"> Production Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-events" value="53"> Events Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-marketing" value="25"> Marketing Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-programming" value="27"> Presenting Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-engineering" value="22"> Engineering Team
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="interest" id="interest-computing" value="23"> Computing Team
+                            </label>
+                        </div>
+                </fieldset>
+            </div>
+            <button class="btn btn-primary col-md-offset-7" type="submit" ng-click="submit()">Get Involved!</button>
+        </form>
+    </div>
+
+</div>
