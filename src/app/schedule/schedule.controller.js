@@ -9,7 +9,7 @@ angular.module('ury')
                     'name': 'Monday',
                     'shows': [
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title',
                             'description': 'Description',
                             'image': '/assets/images/yeoman.png',
@@ -17,7 +17,7 @@ angular.module('ury')
                             'duration': 2
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title2',
                             'description': 'Description2',
                             'image': '/assets/images/yeoman.png',
@@ -25,7 +25,7 @@ angular.module('ury')
                             'duration': 1
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title3',
                             'description': 'Description3',
                             'image': '/assets/images/yeoman.png',
@@ -33,7 +33,7 @@ angular.module('ury')
                             'duration': 1
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title4',
                             'description': 'Description4',
                             'image': '/assets/images/yeoman.png',
@@ -41,7 +41,7 @@ angular.module('ury')
                             'duration': 2
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title5',
                             'description': 'Description5',
                             'image': '/assets/images/yeoman.png',
@@ -49,7 +49,7 @@ angular.module('ury')
                             'duration': 1
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title6',
                             'description': 'Description6',
                             'image': '/assets/images/yeoman.png',
@@ -57,7 +57,7 @@ angular.module('ury')
                             'duration': 1
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title7',
                             'description': 'Description7',
                             'image': '/assets/images/yeoman.png',
@@ -65,7 +65,7 @@ angular.module('ury')
                             'duration': 1
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title8',
                             'description': 'Description8',
                             'image': '/assets/images/yeoman.png',
@@ -78,7 +78,7 @@ angular.module('ury')
                     'name': 'Tuesday',
                     'shows': [
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title',
                             'description': 'Description',
                             'image': '/assets/images/yeoman.png',
@@ -86,7 +86,7 @@ angular.module('ury')
                             'duration': 1
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title2',
                             'description': 'Description2',
                             'image': '/assets/images/yeoman.png',
@@ -94,7 +94,7 @@ angular.module('ury')
                             'duration': 1
                         },
                         {
-                            'time': 'Time',
+                            'time': '28/02/2015 23:00',
                             'title': 'Title3',
                             'description': 'Description3',
                             'image': '/assets/images/yeoman.png',
