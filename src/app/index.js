@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap'])
+angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'angularMoment'])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
@@ -8,6 +8,10 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 controller: 'MainCtrl'
             })
             .when('/schedule', {
+                templateUrl: 'app/schedule/schedule.html',
+                controller: 'ScheduleCtrl'
+            })
+            .when('/schedule/:year/w:week', {
                 templateUrl: 'app/schedule/schedule.html',
                 controller: 'ScheduleCtrl'
             })

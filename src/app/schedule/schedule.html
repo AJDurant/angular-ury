@@ -3,9 +3,10 @@
     <div class="page-header">
         <h1>Schedule <small>Week View</small></h1>
     </div>
+
     <a ng-click="select.name = ''">Week View</a>
     <div class="schedule-week">
-        <div class="schedule-day" ng-repeat="day in week | filter:select">
+        <div class="schedule-day" ng-repeat="day in schedule | filter:select">
             <h2><a ng-click="$parent.select.name = day.name">{{day.name}}</a></h2>
             <schedule-item ng-repeat="item in day.shows" show="item"></schedule-item>
         </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ury')
-    .directive('scheduleItem', function() {
+    .directive('scheduleItem', ['$window', function($window) {
         return {
             restrict: 'E',
             scope: {
@@ -11,8 +11,8 @@ angular.module('ury')
                 element.css({
                     height: 60 * scope.item.duration + 'px'
                 });
-                ElementQueries.init();
+                $window.ElementQueries.init();
             },
             templateUrl: 'components/schedule-item/schedule-item.html'
         };
-    });
+    }]);

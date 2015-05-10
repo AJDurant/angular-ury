@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ury')
-    .controller('TeamCtrl', ['$scope', 'uryAPI', '$location',
-        function ($scope, uryAPI, $location) {
+    .controller('TeamCtrl', ['$scope', 'uryAPI', '$routeParams',
+        function ($scope, uryAPI, $routeParams) {
 
             var teams = {
                 presenting: 16,
@@ -16,7 +16,7 @@ angular.module('ury')
                 events: 14
             };
 
-            var team = $location.path().split('/')[2];
+            var team = $routeParams.team;
             var teamID = teams[team];
 
             uryAPI().get(

@@ -1,10 +1,13 @@
 'use strict';
 
 angular.module('ury')
-    .controller('ScheduleCtrl', ['$scope',
-        function ($scope) {
+    .controller('ScheduleCtrl', ['$scope', '$routeParams', '$window',
+        function ($scope, $routeParams, $window) {
 
-            $scope.week = [
+            $scope.year = $routeParams.year || $window.moment().isoWeekYear();
+            $scope.week = $routeParams.week || $window.moment().isoWeek();
+
+            $scope.schedule = [
                 {
                     'name': 'Monday',
                     'shows': [
