@@ -1,360 +1,55 @@
 'use strict';
 
 angular.module('ury')
-    .controller('ScheduleCtrl', ['$scope', '$routeParams', '$window',
-        function ($scope, $routeParams, $window) {
+    .controller('ScheduleCtrl', ['$scope', '$routeParams', '$window', 'uryAPI',
+        function ($scope, $routeParams, $window, uryAPI) {
 
             $scope.year = $routeParams.year || $window.moment().isoWeekYear();
             $scope.week = $routeParams.week || $window.moment().isoWeek();
 
-            $scope.schedule = [
+            uryAPI().get(
                 {
-                    'name': 'Monday',
-                    'shows': [
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title',
-                            'description': 'Description',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'flagship',
-                            'duration': 2
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title2',
-                            'description': 'Description2',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title3',
-                            'description': 'Description3',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title4',
-                            'description': 'Description4',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 2
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title5',
-                            'description': 'Description5',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title6',
-                            'description': 'Description6',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title7',
-                            'description': 'Description7',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title8',
-                            'description': 'Description8',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 3
-                        },
-                    ]
+                    module: 'Timeslot',
+                    method: 'getWeekSchedule',
+                    weekno: $scope.week,
+                    year: $scope.year
                 },
-                {
-                    'name': 'Tuesday',
-                    'shows': [
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title',
-                            'description': 'Description',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'flagship',
-                            'duration': 1
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title2',
-                            'description': 'Description2',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': '28/02/2015 23:00',
-                            'title': 'Title3',
-                            'description': 'Description3',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'other',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title4',
-                            'description': 'Description4',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title5',
-                            'description': 'Description5',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title6',
-                            'description': 'Description6',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title7',
-                            'description': 'Description7',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title8',
-                            'description': 'Description8',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title9',
-                            'description': 'Description9',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title10',
-                            'description': 'Description10',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title11',
-                            'description': 'Description11',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title12',
-                            'description': 'Description12',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
+                function (data) {
+                    $scope.weekSched = data.payload;
+                    var schedule = [];
+                    var currentDay;
+
+                    for (var i = 0; i < data.payload.length; i++) {
+                        var show = data.payload[i];
+                        var time = $window.moment(show.start_time, 'DD-MM-YYYY HH:mm');
+                        var duration = $window.moment.duration(show.duration);
+                        var endTime = $window.moment(time).add(duration);
+
+                        var showDay = moment(time).startOf('day').add(6, 'h');
+
+                        if (!currentDay || !currentDay.isSame(showDay)) {
+                            if (!currentDay && showDay.isoWeekday() !== 1) {
+                                // Start week on Monday
+                                continue;
+                            }
+                            currentDay = showDay;
+                            schedule.push({name: currentDay.format('dddd'), shows: []});
                         }
-                    ]
-                },
-                {
-                    'name': 'Wednesday',
-                    'shows': [
-                        {
-                            'time': 'Time',
-                            'title': 'Title',
-                            'description': 'Description',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'flagship',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title2',
-                            'description': 'Description2',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title3',
-                            'description': 'Description3',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'other',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title4',
-                            'description': 'Description4',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title5',
-                            'description': 'Description5',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title6',
-                            'description': 'Description6',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title7',
-                            'description': 'Description7',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title8',
-                            'description': 'Description8',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title9',
-                            'description': 'Description9',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title10',
-                            'description': 'Description10',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title11',
-                            'description': 'Description11',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title12',
-                            'description': 'Description12',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        }
-                    ]
-                },
-                {
-                    'name': 'Thursday',
-                    'shows': [
-                        {
-                            'time': 'Time',
-                            'title': 'Title',
-                            'description': 'Description',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'flagship',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title2',
-                            'description': 'Description2',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 2
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title3',
-                            'description': 'Description3',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'other',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title4',
-                            'description': 'Description4',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title5',
-                            'description': 'Description5',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title6',
-                            'description': 'Description6',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title7',
-                            'description': 'Description7',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title8',
-                            'description': 'Description8',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 1
-                        },
-                        {
-                            'time': 'Time',
-                            'title': 'Title9',
-                            'description': 'Description9',
-                            'image': '/assets/images/yeoman.png',
-                            'brand': 'news',
-                            'duration': 3
-                        }
-                    ]
+
+                        schedule[showDay.isoWeekday()-1].shows.push(
+                            {
+                                title: show.title,
+                                time: time,
+                                description: show.description,
+                                image: show.photo,
+                                duration: duration.hours(),
+                                brand: ''
+                            }
+                        );
+
+                    }
+
+                    $scope.schedule = schedule.slice(0,7);
                 }
-            ];
+            );
     }]);
