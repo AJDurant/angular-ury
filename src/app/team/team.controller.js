@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ury')
-    .controller('TeamCtrl', ['$scope', 'uryAPI', '$routeParams',
-        function ($scope, uryAPI, $routeParams) {
+    .controller('TeamCtrl', ['$scope', '$routeParams', 'uryAPI',
+        function ($scope, $routeParams, uryAPI) {
 
             var teams = {
                 presenting: 16,
