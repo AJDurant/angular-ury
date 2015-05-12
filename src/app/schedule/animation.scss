@@ -1,33 +1,65 @@
 
 .schedule-day {
-    .ng-enter, .ng-leave, .ng-move {
-        -webkit-transition: 0.5s linear all;
-        -moz-transition: 0.5s linear all;
-        -o-transition: 0.5s linear all;
-        transition: 0.5s linear all;
+
+    &.ng-enter, &.ng-leave {
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
     }
 
-    .ng-enter, .ng-move {
+    &.ng-enter, &.ng-leave.ng-leave-active {
+        flex: 1;
+        -webkit-animation: flexShrink 300ms ease forwards;
+        -o-animation: flexShrink 300ms ease forwards;
+        animation: flexShrink 300ms ease forwards;
+
         opacity: 0;
-        height: 0;
-        overflow: hidden;
-
-        .ng-enter-active, .ng-move-active {
-            opacity: 1;
-            height: 120px;
-        }
     }
 
-    .ng-leave {
+    &.ng-leave, &.ng-enter.ng-enter-active {
+        flex: .00001;
+        -webkit-animation: flexGrow 300ms ease forwards;
+        -o-animation: flexGrow 300ms ease forwards;
+        animation: flexGrow 300ms ease forwards;
+
         opacity: 1;
-        overflow: hidden;
-
-        .ng-leave-active {
-            opacity: 0;
-            height: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
     }
 
+}
+
+@-webkit-keyframes flexGrow {
+    to {
+        flex: 1;
+    }
+}
+@-o-keyframes flexGrow {
+    to {
+        flex: 1;
+    }
+}
+@keyframes flexGrow {
+    to {
+        flex: 1;
+    }
+}
+
+@-webkit-keyframes flexShrink {
+    to {
+        flex: .01;
+        flex: .00001;
+    }
+}
+@-o-keyframes flexShrink {
+    to {
+        flex: .01;
+        flex: .00001;
+    }
+}
+@keyframes flexShrink {
+    to {
+        flex: .01;
+        flex: .00001;
+    }
 }

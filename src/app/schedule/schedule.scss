@@ -11,6 +11,10 @@
     flex-direction: column;
     flex: 1 0 0;
 
+    .day-title {
+        text-align: center;
+    }
+
     schedule-item {
         margin-bottom: 0;
         border-bottom: 1px solid;
