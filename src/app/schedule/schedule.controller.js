@@ -26,8 +26,13 @@ angular.module('ury')
                         var time = $window.moment(show.start_time, 'DD-MM-YYYY HH:mm');
                         var duration = $window.moment.duration(show.duration);
                         var endTime = $window.moment(time).add(duration);
+                        var showDay;
 
-                        var showDay = $window.moment(time).startOf('day').add(9, 'h');
+                        if (time.hour() < 9) {
+                            showDay = $window.moment(time).startOf('day').subtract(1, 'day').add(9, 'h');
+                        } else {
+                            showDay = $window.moment(time).startOf('day').add(9, 'h');
+                        }
 
                         if (!currentDay || !currentDay.isSame(showDay)) {
                             if (!currentDay && showDay.isoWeekday() !== 1) {
