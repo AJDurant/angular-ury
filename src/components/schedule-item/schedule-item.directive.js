@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ury')
-    .directive('scheduleItem', ['$window', function($window) {
+    .directive('scheduleItem', ['$window', 'amDateFormatFilter', function($window, amDateFormat) {
         return {
             restrict: 'E',
             scope: {

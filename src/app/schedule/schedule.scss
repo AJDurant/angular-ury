@@ -79,4 +79,7 @@ schedule-item[max-width~="500px"] {
         font-size: 18px;
     }
 }
+schedule-item[min-width="500px"] {
+    height: auto !important;
+}
 
