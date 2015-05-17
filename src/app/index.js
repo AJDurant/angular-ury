@@ -23,6 +23,10 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 templateUrl: 'app/getinvolved/getinvolved.html',
                 controller: 'GetInvolvedCtrl'
             })
+            .when('/about', {
+                templateUrl: 'app/about/about.html',
+                controller: 'AboutCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
