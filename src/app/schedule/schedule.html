@@ -4,7 +4,19 @@
         <h1>Schedule <small>Week View</small></h1>
     </div>
 
-    <a href="" ng-click="select.name = ''">Week View</a>
+    <div class="well well-sm clearfix text-center">
+        <div class="pull-left">
+            <a ng-href="/schedule/{{yearprev}}/w{{weekprev}}">Previous Week</a>
+        </div>
+        <span class="">
+            <a href="/schedule" >This Week</a>
+            &laquo;&nbsp;&raquo;
+            <a href="" ng-click="select.name = ''">Week View</a>
+        </span>
+        <div class="pull-right">
+            <a ng-href="/schedule/{{yearnext}}/w{{weeknext}}">Next Week</a>
+        </div>
+    </div>
     <div class="schedule-week">
         <div class="schedule-day" ng-repeat="day in schedule | filter:select">
             <h2 class="day-title"><a href="" ng-click="$parent.select.name = day.name">{{day.name}}</a></h2>

@@ -7,6 +7,12 @@ angular.module('ury')
             $scope.year = $routeParams.year || $window.moment().isoWeekYear();
             $scope.week = $routeParams.week || $window.moment().isoWeek();
 
+            $scope.yearprev = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).subtract(1, 'week').isoWeekYear();
+            $scope.weekprev = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).subtract(1, 'week').isoWeek();
+
+            $scope.yearnext = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).add(1, 'week').isoWeekYear();
+            $scope.weeknext = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).add(1, 'week').isoWeek();
+
             uryAPI().get(
                 {
                     module: 'Timeslot',
@@ -28,6 +34,7 @@ angular.module('ury')
                         var endTime = $window.moment(time).add(duration);
                         var showDay;
 
+                        // Start URY days at 9 am
                         if (time.hour() < 9) {
                             showDay = $window.moment(time).startOf('day').subtract(1, 'day').add(9, 'h');
                         } else {
