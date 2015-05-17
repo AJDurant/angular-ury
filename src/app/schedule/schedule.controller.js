@@ -21,7 +21,6 @@ angular.module('ury')
                     year: $scope.year
                 },
                 function (data) {
-                    $scope.weekSched = data.payload;
                     var schedule = [];
                     var currentDay;
                     var dayIndex = -1;
@@ -75,6 +74,7 @@ angular.module('ury')
                                 time: time,
                                 description: show.description,
                                 image: show.photo,
+                                url: '/schedule/shows/timeslots/' + show.id,
                                 duration: duration.asHours(),
                                 brand: ''
                             }

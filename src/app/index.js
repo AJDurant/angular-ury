@@ -15,6 +15,14 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 templateUrl: 'app/schedule/schedule.html',
                 controller: 'ScheduleCtrl'
             })
+            .when('/schedule/shows/:showid', {
+                templateUrl: 'app/shows/show.html',
+                controller: 'ShowCtrl'
+            })
+            .when('/schedule/shows/timeslots/:timeslotid', {
+                templateUrl: 'app/shows/timeslot.html',
+                controller: 'TimeslotCtrl'
+            })
             .when('/team/:team', {
                 templateUrl: 'app/team/team.html',
                 controller: 'TeamCtrl'

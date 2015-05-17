@@ -1,6 +1,6 @@
 <div class="show-item">
     <h1 class="show-time">{{item.time | amDateFormat: "HH:mm"}}</h1>
-    <h2 class="show-title"><a href="">{{item.title}}</a></h2>
+    <h2 class="show-title"><a ng-href="{{item.url}}">{{item.title}}</a></h2>
     <p class="show-desc">{{item.description}}</p>
     <img class="show-img">
     <span class="show-brand">{{item.brand}}</span>

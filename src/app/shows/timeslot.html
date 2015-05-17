@@ -1,0 +1,26 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1>{{timeslot.title}} <small>{{timeslot.start_time | amDateFormat:'dddd, Do MMMM YYYY, HH:mm'}}</small></h1>
+    </div>
+
+    <h2>Credits</h2>
+    <dl>
+        <dt ng-repeat-start="credit in credits">{{credit.type_name}}</dt>
+        <dd ng-repeat-end>{{credit.name}}</dd>
+    </dl>
+
+    <h2>Tracklist</h2>
+    <table class="timeslot-tracklist">
+        <tr>
+            <th>Track</th>
+            <th>Artist</th>
+            <th>Time</th>
+        </tr>
+        <tr ng-repeat="track in tracklist">
+            <td>{{track.title}}</td>
+            <td>{{track.artist}}</td>
+            <td>{{track.starttime  | amDateFormat:'HH:mm:ss'}}</td>
+        </tr>
+    </table>
+</div>
