@@ -9,7 +9,7 @@ angular.module('ury')
             },
             link: function(scope, element) {
                 element.css({
-                    height: 120 * scope.item.duration + 'px'
+                    height: 60 * scope.item.duration + 'px'
                 });
                 $window.ElementQueries.init();
             },
