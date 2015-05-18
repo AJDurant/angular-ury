@@ -6,8 +6,10 @@
 
     <h2>Credits</h2>
     <dl>
-        <dt ng-repeat-start="credit in credits">{{credit.type_name}}</dt>
-        <dd ng-repeat-end>{{credit.name}}</dd>
+        <div class="credit" ng-repeat="credit in credits">
+            <dt>{{credit.type_name}}</dt>
+            <dd>{{credit.name}}</dd>
+        </div>
     </dl>
 
     <h2>Tracklist</h2>
