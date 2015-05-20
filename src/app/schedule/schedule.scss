@@ -1,3 +1,5 @@
+$schedule-bg: #eeeeee;
+
 
 .schedule-week {
     display: flex;
@@ -23,7 +25,7 @@
 
 schedule-item {
     position: relative;
-    background-color: #eeeeee;
+    background-color: $schedule-bg;
     overflow: hidden;
     min-height: 120px;
     padding-left: 120px;
@@ -32,6 +34,11 @@ schedule-item {
 
     .show-item {
         padding-left: 10px;
+
+        .show-title {
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
     }
 
     h1 {
@@ -68,7 +75,7 @@ schedule-item {
 
 
 schedule-item[max-width~="500px"] {
-    min-height: 60px;
+    min-height: 30px;
     padding: 5px;
 
     .show-time, .show-desc, .show-img, .show-brand {
@@ -83,3 +90,21 @@ schedule-item[min-width="500px"] {
     height: auto !important;
 }
 
+
+// Branding
+
+schedule-item.jukebox {
+    background-color: lighten($schedule-bg, 3%);
+}
+schedule-item.flagship {
+    background-color: #79CED6;
+}
+schedule-item.news {
+    background-color: #FF726B;
+}
+schedule-item.speech {
+    background-color: #5AD86A;
+}
+schedule-item.event {
+    background-color: #FFB16B;
+}

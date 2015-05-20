@@ -11,6 +11,7 @@ angular.module('ury')
                 element.css({
                     height: 60 * scope.item.duration + 'px'
                 });
+                element.addClass(scope.item.brand.toLowerCase());
                 $window.ElementQueries.init();
             },
             templateUrl: 'components/schedule-item/schedule-item.html'

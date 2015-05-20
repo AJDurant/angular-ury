@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ury')
-    .controller('ScheduleCtrl', ['$scope', '$routeParams', '$window', 'uryAPI',
-        function ($scope, $routeParams, $window, uryAPI) {
+    .controller('ScheduleCtrl', ['$scope', '$routeParams', '$window', 'uryAPI', 'uryBrand',
+        function ($scope, $routeParams, $window, uryAPI, uryBrand) {
 
             $scope.year = $routeParams.year || $window.moment().isoWeekYear();
             $scope.week = $routeParams.week || $window.moment().isoWeek();
@@ -76,7 +76,7 @@ angular.module('ury')
                                 image: show.photo,
                                 url: '/schedule/shows/timeslots/' + show.id,
                                 duration: duration.asHours(),
-                                brand: ''
+                                brand: uryBrand.getBrand(show.title, time)
                             }
                         );
                         lastTime = endTime;
