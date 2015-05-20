@@ -37,8 +37,8 @@ angular.module('ury')
                 },
                 function (data) {
                     $scope.tracklist = data.payload;
-                    $scope.tracklist.forEach(function (element) {
-                        element.starttime = $window.moment(element.starttime, 'DD-MM-YYYY HH:mm:ss');
+                    $scope.tracklist.forEach(function (track) {
+                        track.starttime = $window.moment(track.starttime, 'DD-MM-YYYY HH:mm:ss');
                     });
                 }
             );

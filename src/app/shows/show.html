@@ -1,0 +1,35 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1>{{show.title}}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-10" ng-bind-html="show.description">
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Seasons</h2>
+            <ol>
+                <li ng-repeat="season in seasons">
+                    <a ng-href="/schedule/shows/seasons/{{season.id}}">
+                    {{season.first_time | amDateFormat: "MMMM Do YYYY"}} ({{season.num_episodes.value}} episodes)
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <div class="col-sm-6">
+            <h2>Credits</h2>
+            <dl>
+                <div class="credit" ng-repeat="credit in credits">
+                    <dt>{{credit.type_name}}</dt>
+                    <dd>{{credit.name}}</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+</div>

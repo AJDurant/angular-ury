@@ -19,6 +19,10 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 templateUrl: 'app/shows/show.html',
                 controller: 'ShowCtrl'
             })
+            .when('/schedule/shows/seasons/:seasonid', {
+                templateUrl: 'app/shows/season.html',
+                controller: 'SeasonCtrl'
+            })
             .when('/schedule/shows/timeslots/:timeslotid', {
                 templateUrl: 'app/shows/timeslot.html',
                 controller: 'TimeslotCtrl'

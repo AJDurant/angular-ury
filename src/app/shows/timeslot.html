@@ -4,6 +4,15 @@
         <h1>{{timeslot.title}} <small>{{timeslot.start_time | amDateFormat:'dddd, Do MMMM YYYY, HH:mm'}}</small></h1>
     </div>
 
+    <div class="row">
+        <div class="col-xs-10" ng-bind-html="timeslot.description">
+        </div>
+        <div class="col-xs-2">
+            <a ng-href="/schedule/seasons/{{timeslot.season_id}}">Season</a>
+            <a ng-href="/schedule/shows/{{timeslot.show_id}}">Show</a>
+        </div>
+    </div>
+
     <h2>Credits</h2>
     <dl>
         <div class="credit" ng-repeat="credit in credits">
