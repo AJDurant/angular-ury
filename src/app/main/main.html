@@ -3,8 +3,28 @@
     <div class="row">
         <div class="col-md-3">
             <h2>Send a Message</h2>
-            <div ng-if="onAir.status">Message box</div>
-            <div ng-if="!onAir.status">No Message box</div>
+            <div ng-if="onAir.status">
+                <form action="https://ury.org.uk/schedule/message-current-show/" name="message" method="post">
+                    <textarea id="comments" name="comments" class="form-control" rows="5" placeholder="Type your message here"></textarea>
+                    <button type="submit" class="btn btn-default btn-lg btn-block">Send Message</button>
+                </form>
+                <br>
+                <dl class="dl-horizontal dl-sm">
+                    <dt>Call</dt>
+                    <dd>01904 32 1350</dd>
+                    <dt>Text</dt>
+                    <dd>07851 101 313</dd>
+                </dl>
+            </div>
+            <div ng-if="!onAir.status">
+                <p>There is no show on at the moment, and our Jukbox can't read, so I'm afraid you can't send a message.</p>
+                <dl class="dl-horizontal dl-sm">
+                    <dt>Call</dt>
+                    <dd>01904 32 1350</dd>
+                    <dt>Text</dt>
+                    <dd>07851 101 313</dd>
+                </dl>
+            </div>
         </div>
         <div class="col-md-9" style="height: 305px">
             <carousel interval="myInterval" disable-animation="true">
@@ -25,9 +45,9 @@
         <div class="col-sm-6">
             <h2 class="invisible">Teams</h2>
             <div class="col-sm-6 col-md-4" ng-repeat="team in teams">
-                <a ng-href="{{team.link}}">
+                <a ng-href="/team/{{team.alias}}">
                     <img>{{team.logo}}</img>
-                    <div>{{team.name}}</div>
+                    <div>{{team.text}}</div>
                 </a>
             </div>
         </div>

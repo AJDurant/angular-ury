@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ury')
-    .controller('MainCtrl', ['$scope', 'onAir',
-        function ($scope, onAir) {
+    .controller('MainCtrl', ['$scope', 'onAir', 'uryAPI',
+        function ($scope, onAir, uryAPI) {
 
         // Update with global status
         $scope.onAir = onAir;
@@ -20,5 +20,16 @@ angular.module('ury')
         for (var i=0; i<4; i++) {
             $scope.addSlide();
         }
+
+        uryAPI().get(
+                {
+                    module: 'Team',
+                    method: 'getCurrentTeams'
+                },
+                function (data) {
+                    $scope.teams = data.payload;
+
+                }
+            );
 
     }]);
