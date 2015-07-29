@@ -4,13 +4,11 @@ angular.module('ury')
     .controller('TeamCtrl', ['$scope', '$routeParams', 'uryAPI',
         function ($scope, $routeParams, uryAPI) {
 
-            var team = $routeParams.team;
-
             uryAPI().get(
                 {
                     module: 'team',
                     method: 'byalias',
-                    firstParam: team,
+                    firstParam: $routeParams.team,
                     mixins: 'officers'
                 },
                 function (data) {
