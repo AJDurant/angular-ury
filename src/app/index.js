@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'angularMoment'])
-    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    .config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', function ($routeProvider, $locationProvider, $sceDelegateProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'app/main/main.html',
@@ -27,6 +27,14 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 templateUrl: 'app/shows/timeslot.html',
                 controller: 'TimeslotCtrl'
             })
+            .when('/uryplayer/podcasts/:podcastid', {
+                templateUrl: 'app/uryplayer/podcast.html',
+                controller: 'PodcastCtrl'
+            })
+            .when('/uryplayer/:mixcloudid', {
+                templateUrl: 'app/uryplayer/mixcloud.html',
+                controller: 'MixcloudCtrl'
+            })
             .when('/team/:team', {
                 templateUrl: 'app/team/team.html',
                 controller: 'TeamCtrl'
@@ -42,7 +50,17 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
             .otherwise({
                 redirectTo: '/'
             });
+
         $locationProvider.html5Mode(true).hashPrefix('!');
+
+        $sceDelegateProvider.resourceUrlWhitelist([
+            // Allow same origin resource loads.
+            'self',
+            // Allow loading from our assets domain.  Notice the difference between * and **.
+            'http://ury.org.uk/**',
+            'http://api.mixcloud.com/URY1350/**',
+            'https://www.mixcloud.com/widget/iframe/**'
+        ]);
     }]) // Global status for feature control across controllers
     .service('onAir', function () {
         var serviceMembers = {

@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1>{{podcast.name}}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-10" ng-bind-html="podcast.description">
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Player</h2>
+            <iframe width="100%" height="350" frameborder="0" ng-src="{{embed}}"> </iframe>
+
+        </div>
+        <div class="col-sm-6">
+            <h2>Credits</h2>
+            <dl>
+                <div class="credit" ng-repeat="credit in credits">
+                    <dt>{{credit.type_name}}</dt>
+                    <dd>{{credit.name}}</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+</div>
