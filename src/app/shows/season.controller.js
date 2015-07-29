@@ -6,7 +6,7 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Season',
+                    module: 'season',
                     ID: $routeParams.seasonid,
                     full: true
                 },
@@ -16,9 +16,9 @@ angular.module('ury')
                     // Season Credits don't work, so get them from the show. FIXME
                     uryAPI().get(
                         {
-                            module: 'Show',
+                            module: 'show',
                             ID: $scope.season.show_id,
-                            method: 'getCreditsNames'
+                            method: 'creditsnames'
                         },
                         function (data) {
                             $scope.credits = data.payload;
@@ -39,9 +39,9 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Season',
+                    module: 'season',
                     ID: $routeParams.seasonid,
-                    method: 'getAllTimeslots'
+                    method: 'alltimeslots'
                 },
                 function (data) {
                     $scope.timeslots = data.payload;

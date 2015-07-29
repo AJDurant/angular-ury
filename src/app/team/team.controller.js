@@ -21,7 +21,7 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Team',
+                    module: 'team',
                     ID: teamID,
                     full: true
                 },

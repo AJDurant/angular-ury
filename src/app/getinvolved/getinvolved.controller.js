@@ -9,8 +9,8 @@ angular.module('ury')
 
                 uryAPI($scope.user).save(
                     {
-                        module: 'User',
-                        method: 'create'
+                        module: 'user',
+                        method: 'createoractivate'
                     },
                     null,
                     function(data) {

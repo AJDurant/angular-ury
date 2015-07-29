@@ -6,7 +6,7 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Timeslot',
+                    module: 'timeslot',
                     ID: $routeParams.timeslotid,
                     full: true
                 },
@@ -19,9 +19,9 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Timeslot',
+                    module: 'timeslot',
                     ID: $routeParams.timeslotid,
-                    method: 'getCreditsNames'
+                    method: 'creditsnames'
                 },
                 function (data) {
                     $scope.credits = data.payload;
@@ -30,8 +30,8 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'TracklistItem',
-                    method: 'getTracklistForTimeslot',
+                    module: 'tracklistItem',
+                    method: 'tracklistfortimeslot',
                     timeslotid: $routeParams.timeslotid,
                     offset: 0
                 },

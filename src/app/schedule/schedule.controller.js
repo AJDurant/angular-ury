@@ -15,8 +15,8 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Timeslot',
-                    method: 'getWeekSchedule',
+                    module: 'timeslot',
+                    method: 'weekschedule',
                     weekno: $scope.week,
                     year: $scope.year
                 },

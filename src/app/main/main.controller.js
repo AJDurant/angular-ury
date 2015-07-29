@@ -23,8 +23,8 @@ angular.module('ury')
 
         uryAPI().get(
                 {
-                    module: 'Team',
-                    method: 'getCurrentTeams'
+                    module: 'team',
+                    method: 'currentteams'
                 },
                 function (data) {
                     $scope.teams = data.payload;

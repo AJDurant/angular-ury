@@ -8,8 +8,8 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Timeslot',
-                    method: 'getCurrentAndNext'
+                    module: 'timeslot',
+                    method: 'currentandnext'
                 },
                 function(data) {
                     $scope.show = data.payload;

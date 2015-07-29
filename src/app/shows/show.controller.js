@@ -6,7 +6,7 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Show',
+                    module: 'show',
                     ID: $routeParams.showid,
                     full: true
                 },
@@ -28,9 +28,9 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Show',
+                    module: 'show',
                     ID: $routeParams.showid,
-                    method: 'getAllSeasons'
+                    method: 'allseasons'
                 },
                 function (data) {
                     $scope.seasons = data.payload;
@@ -44,9 +44,9 @@ angular.module('ury')
 
             uryAPI().get(
                 {
-                    module: 'Show',
+                    module: 'show',
                     ID: $routeParams.showid,
-                    method: 'getCreditsNames'
+                    method: 'creditsnames'
                 },
                 function (data) {
                     $scope.credits = data.payload;
