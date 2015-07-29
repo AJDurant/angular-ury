@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ury')
-    .controller('PodcastCtrl', ['$scope', '$routeParams', '$sce', 'uryAPI',
-        function ($scope, $routeParams, $sce, uryAPI) {
+    .controller('PodcastCtrl', ['$scope', '$routeParams', 'uryAPI',
+        function ($scope, $routeParams, uryAPI) {
 
             uryAPI().get(
                 {

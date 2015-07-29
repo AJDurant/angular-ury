@@ -32,7 +32,7 @@ angular.module('ury')
                 {
                     module: 'tracklistItem',
                     method: 'tracklistfortimeslot',
-                    timeslotid: $routeParams.timeslotid,
+                    firstParam: $routeParams.timeslotid,
                     offset: 0
                 },
                 function (data) {

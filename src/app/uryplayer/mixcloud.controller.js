@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ury')
-    .controller('MixcloudCtrl', ['$scope', '$routeParams', '$sce', '$http',
-        function ($scope, $routeParams, $sce, $http) {
+    .controller('MixcloudCtrl', ['$scope', '$routeParams', '$http', 'uryAPI',
+        function ($scope, $routeParams, $http, uryAPI) {
 
             $http.get('http://api.mixcloud.com/URY1350/'+$routeParams.mixcloudid+'/').
                 success(function(data, status, headers, config) {
@@ -18,6 +18,28 @@ angular.module('ury')
                     '&mini='+
                     '&replace=0'+
                     '&stylecolor=';
+
+                    uryAPI().get(
+                        {
+                            module: 'timeslot',
+                            method: 'fromslug',
+                            firstParam: $scope.podcast.slug
+                        },
+                        function (data) {
+                            $scope.timeslot = data.payload;
+
+                            uryAPI().get(
+                                {
+                                    module: 'timeslot',
+                                    ID: $scope.timeslot.id,
+                                    method: 'creditsnames'
+                                },
+                                function (data) {
+                                    $scope.credits = data.payload;
+                                }
+                            );
+                        }
+                    );
                 }).
                 error(function(data, status, headers, config) {
                     // log error
