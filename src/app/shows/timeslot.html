@@ -15,13 +15,22 @@
         </div>
     </div>
 
-    <h2>Credits</h2>
-    <dl>
-        <div class="credit" ng-repeat="credit in credits">
-            <dt>{{credit.type_name}}</dt>
-            <dd>{{credit.name}}</dd>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Credits</h2>
+            <dl>
+                <div class="credit" ng-repeat="credit in credits">
+                    <dt>{{credit.type_name}}</dt>
+                    <dd>{{credit.name}}</dd>
+                </div>
+            </dl>
         </div>
-    </dl>
+        <div class="col-sm-6" ng-show="embed">
+            <h2>Listen Again</h2>
+            <iframe width="100%" height="350" frameborder="0" ng-src="{{embed}}"> </iframe>
+
+        </div>
+    </div>
 
     <h2>Tracklist</h2>
     <table class="timeslot-tracklist">

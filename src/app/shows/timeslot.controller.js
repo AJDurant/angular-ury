@@ -14,6 +14,22 @@ angular.module('ury')
                     $scope.timeslot = data.payload;
 
                     $scope.timeslot.start_time = $window.moment($scope.timeslot.start_time, 'DD-MM-YYYY HH:mm');
+
+                    if ($scope.timeslot.mixcloud_status.startsWith('/URY1350/')) {
+                        $scope.embed = 'https://www.mixcloud.com/widget/iframe/'+
+                        '?autoplay='+
+                        '&embed_type=widget_standard'+
+                        '&feed=https://www.mixcloud.com'+$scope.timeslot.mixcloud_status+
+                        '&hide_artwork='+
+                        '&hide_cover='+
+                        '&hide_tracklist='+
+                        '&light='+
+                        '&mini='+
+                        '&replace=0'+
+                        '&stylecolor=';
+                    } else {
+                        $scope.embed = false;
+                    }
                 }
             );
 
