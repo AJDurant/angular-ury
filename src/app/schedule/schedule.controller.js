@@ -17,7 +17,7 @@ angular.module('ury')
                 {
                     module: 'timeslot',
                     method: 'weekschedule',
-                    weekno: $scope.week,
+                    firstParam: $scope.week,
                     year: $scope.year
                 },
                 function (data) {
