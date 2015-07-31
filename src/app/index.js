@@ -51,6 +51,10 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 templateUrl: 'app/about/about.html',
                 controller: 'AboutCtrl'
             })
+            .when('/search', {
+                templateUrl: 'app/search/search.html',
+                controller: 'SearchCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

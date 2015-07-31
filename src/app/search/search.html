@@ -1,0 +1,17 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1>Search URY</h1>
+    </div>
+
+    <div class="row">
+        <form class="well form-search">
+                <label>Search:</label>
+                <input type="text" ng-model="keywords" class="input-medium search-query" placeholder="Keywords...">
+                <button type="submit" class="btn" ng-click="search()">Search</button>
+                <p class="help-block">Try for example: "php" or "angularjs" or "asdfg"</p>
+            </form>
+        <pre ng-model="results">{{results}}</pre>
+    </div>
+
+</div>
