@@ -28,7 +28,7 @@ angular.module('ury')
 
                 for (var i = 0; i < data.payload.length; i++) {
                     var show = data.payload[i];
-                    var time = $window.moment(show.start_time, 'DD-MM-YYYY HH:mm');
+                    var time = $window.moment(show.time * 1000);
                     var duration = $window.moment.duration(show.duration);
                     var endTime = $window.moment(time).add(duration);
                     var showDay;

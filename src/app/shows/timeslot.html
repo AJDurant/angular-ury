@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>{{timeslot.title}} <small>{{timeslot.start_time | amDateFormat:'dddd, Do MMMM YYYY, HH:mm'}}</small></h1>
+        <h1>{{timeslot.title}} <small>{{timeslot.time * 1000 | amDateFormat:'dddd, Do MMMM YYYY, HH:mm'}}</small></h1>
     </div>
 
     <div class="row">
@@ -42,7 +42,7 @@
         <tr ng-repeat="track in tracklist">
             <td>{{track.title}}</td>
             <td>{{track.artist}}</td>
-            <td>{{track.starttime | amDateFormat:'HH:mm:ss'}}</td>
+            <td>{{track.time * 1000 | amDateFormat:'HH:mm:ss'}}</td>
         </tr>
     </table>
 </div>

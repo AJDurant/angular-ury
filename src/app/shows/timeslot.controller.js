@@ -13,8 +13,6 @@ angular.module('ury')
             ).then(function (data) {
                 $scope.timeslot = data.payload;
 
-                $scope.timeslot.start_time = $window.moment($scope.timeslot.start_time, 'DD-MM-YYYY HH:mm');
-
                 if ($scope.timeslot.mixcloud_status.startsWith('/URY1350/')) {
                     $scope.embed = 'https://www.mixcloud.com/widget/iframe/'+
                     '?autoplay='+
@@ -51,8 +49,5 @@ angular.module('ury')
                 }
             ).then(function (data) {
                 $scope.tracklist = data.payload;
-                $scope.tracklist.forEach(function (track) {
-                    track.starttime = $window.moment(track.starttime, 'DD-MM-YYYY HH:mm:ss');
-                });
             });
 }]);

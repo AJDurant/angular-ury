@@ -20,7 +20,7 @@
             <ol>
                 <li ng-repeat="timeslot in timeslots">
                     <a ng-href="/schedule/shows/timeslots/{{timeslot.id}}">
-                    {{timeslot.start_time | amDateFormat: "HH:mm - MMMM Do YYYY"}}
+                    {{timeslot.time * 1000 | amDateFormat: "HH:mm - MMMM Do YYYY"}}
                     </a>
                 </li>
             </ol>
