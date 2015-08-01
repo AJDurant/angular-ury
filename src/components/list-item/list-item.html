@@ -1,5 +1,5 @@
 <div class="list-item">
-    <h1 class="item-time">{{item.time | amDateFormat: "HH:mm"}}</h1>
+    <h1 class="item-time">{{item.time * 1000 | amDateFormat: "HH:mm DD/MM/YYYY"}}</h1>
     <h2 class="item-title"><a ng-href="{{item.micrositelink.url}}">{{item.title}}</a></h2>
     <p class="item-desc" ng-bind-html="item.description"></p>
     <img class="item-img">
