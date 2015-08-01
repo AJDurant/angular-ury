@@ -21,15 +21,13 @@ angular.module('ury')
             $scope.addSlide();
         }
 
-        uryAPI().get(
-                {
-                    module: 'team',
-                    method: 'currentteams'
-                },
-                function (data) {
-                    $scope.teams = data.payload;
-
-                }
-            );
+        uryAPI('get',
+            {
+                module: 'team',
+                method: 'currentteams'
+            }
+        ).then(function (data) {
+            $scope.teams = data.payload;
+        });
 
     }]);

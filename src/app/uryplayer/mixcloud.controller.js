@@ -19,27 +19,25 @@ angular.module('ury')
                     '&replace=0'+
                     '&stylecolor=';
 
-                    uryAPI().get(
+                    uryAPI('get',
                         {
                             module: 'timeslot',
                             method: 'fromslug',
                             firstParam: $scope.podcast.slug
-                        },
-                        function (data) {
-                            $scope.timeslot = data.payload;
-
-                            uryAPI().get(
-                                {
-                                    module: 'timeslot',
-                                    ID: $scope.timeslot.id,
-                                    method: 'creditsnames'
-                                },
-                                function (data) {
-                                    $scope.credits = data.payload;
-                                }
-                            );
                         }
-                    );
+                    ).then(function (data) {
+                        $scope.timeslot = data.payload;
+                    }).then(function () {
+                        uryAPI('get',
+                            {
+                                module: 'timeslot',
+                                ID: $scope.timeslot.id,
+                                method: 'creditsnames'
+                            }
+                        ).then(function (data) {
+                            $scope.credits = data.payload;
+                        });
+                    });
                 }).
                 error(function(data, status, headers, config) {
                     // log error

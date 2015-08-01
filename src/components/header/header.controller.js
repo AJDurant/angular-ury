@@ -9,10 +9,10 @@ angular.module('ury')
             uryAPI('get', {
                     module: 'timeslot',
                     method: 'currentandnext'
-                }).then(function(data) {
-                    $scope.show = data.payload;
-                    // Update global status
-                    $scope.onAir.status = (typeof $scope.show.current.url !== 'undefined');
                 }
-            );
+            ).then(function(data) {
+                $scope.show = data.payload;
+                // Update global status
+                $scope.onAir.status = (typeof $scope.show.current.url !== 'undefined');
+            });
     }]);

@@ -4,37 +4,33 @@ angular.module('ury')
     .controller('PodcastCtrl', ['$scope', '$routeParams', 'uryAPI',
         function ($scope, $routeParams, uryAPI) {
 
-            uryAPI().get(
+            uryAPI('get',
                 {
                     module: 'podcast',
                     ID: $routeParams.podcastid
-                },
-                function (data) {
-                    $scope.podcast = data.payload;
                 }
-            );
+            ).then(function (data) {
+                $scope.podcast = data.payload;
+            });
 
-            uryAPI().get(
+            uryAPI('get',
                 {
                     module: 'podcast',
                     ID: $routeParams.podcastid,
                     method: 'uri'
-                },
-                function (data) {
-                    // TODO: remove in prod
-                    $scope.audio = 'http://ury.org.uk' + data.payload;
                 }
-            );
+            ).then(function (data) {
+                // TODO: remove in prod
+                $scope.audio = 'http://ury.org.uk' + data.payload;
+            });
 
-            uryAPI().get(
+            uryAPI('get',
                 {
                     module: 'podcast',
                     ID: $routeParams.podcastid,
                     method: 'creditsnames'
-                },
-                function (data) {
-                    $scope.credits = data.payload;
                 }
-            );
-
+            ).then(function (data) {
+                $scope.credits = data.payload;
+            });
 }]);

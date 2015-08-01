@@ -7,18 +7,18 @@ angular.module('ury')
             $scope.submit = function() {
                 console.log($scope.user);
 
-                uryAPI($scope.user).save(
+                uryAPI('save', $scope.user,
                     {
                         module: 'user',
                         method: 'createoractivate'
-                    },
-                    null,
-                    function(data) {
+                    }
+                ).then(
+                    function (data) {
                         console.log(data);
                     },
-                    function(data) {
+                    function (data) {
                         console.log(data);
                     }
                 );
             };
-}]);
+    }]);

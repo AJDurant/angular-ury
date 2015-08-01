@@ -10,13 +10,13 @@ angular.module('ury')
             };
 
             var metaSearch = function (key, query) {
-                return uryAPI().get(
+                return uryAPI('get',
                     {
                         module: key,
                         method: 'searchmeta',
                         firstParam: query
                     }
-                ).$promise;
+                );
             };
 
             $scope.search = function () {
