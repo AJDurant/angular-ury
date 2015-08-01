@@ -4,20 +4,15 @@ angular.module('ury')
     .controller('SearchCtrl', ['$scope', '$q', 'uryAPI',
         function ($scope, $q, uryAPI) {
 
-            var showSearch = function (query) {
-                return uryAPI().get(
-                    {
-                        module: 'show',
-                        method: 'searchmeta',
-                        firstParam: query
-                    }
-                ).$promise;
+            $scope.keys = {
+                show: true,
+                podcast: true
             };
 
-            var podcastSearch = function (query) {
+            var metaSearch = function (key, query) {
                 return uryAPI().get(
                     {
-                        module: 'podcast',
+                        module: key,
                         method: 'searchmeta',
                         firstParam: query
                     }
@@ -30,10 +25,16 @@ angular.module('ury')
                     payload: [],
                     time: ''
                 };
-                var shows = showSearch($scope.keywords);
-                var podcasts = podcastSearch($scope.keywords);
 
-                $q.all([shows, podcasts])
+                var searches = [];
+
+                angular.forEach($scope.keys, function(enabled, key){
+                    if (enabled) {
+                        this.push(metaSearch(key, $scope.query));
+                    }
+                }, searches);
+
+                $q.all(searches)
                 .then(
                     function (data) {
                         $scope.results.status = 'OK';
@@ -43,11 +44,16 @@ angular.module('ury')
                 ).then(
                     function () {
                         angular.forEach($scope.results.payload, function(item){
-                            if (item.hasOwnProperty('show_id')) {
-                                item.brand = 'Show';
-                            } else if (item.hasOwnProperty('podcast_id')) {
-                                item.brand = 'Podcast';
-                            }
+
+                            item.brand = '';
+
+                            Object.keys(item).forEach(function (key) {
+                                var re = /(^[A-Za-z]*?)_id$/;
+                                if (re.test(key)) {
+                                    console.log('match: ' + key);
+                                    item.brand = RegExp.$1;
+                                }
+                            });
                         });
                     }
                 );
