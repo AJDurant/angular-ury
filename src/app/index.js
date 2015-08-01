@@ -2,6 +2,8 @@
 
 angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'angularMoment'])
     .config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', function ($routeProvider, $locationProvider, $sceDelegateProvider) {
+
+        // Set up application routes
         $routeProvider
             .when('/', {
                 templateUrl: 'app/main/main.html',
@@ -59,6 +61,7 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 redirectTo: '/'
             });
 
+        // turn on AJAX loading with URLs
         $locationProvider.html5Mode(true).hashPrefix('!');
 
         $sceDelegateProvider.resourceUrlWhitelist([

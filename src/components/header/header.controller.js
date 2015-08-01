@@ -6,16 +6,13 @@ angular.module('ury')
 
             $scope.onAir = onAir;
 
-            uryAPI().get(
-                {
+            uryAPI('get', {
                     module: 'timeslot',
                     method: 'currentandnext'
-                },
-                function(data) {
+                }).then(function(data) {
                     $scope.show = data.payload;
                     // Update global status
                     $scope.onAir.status = (typeof $scope.show.current.url !== 'undefined');
                 }
             );
-
     }]);

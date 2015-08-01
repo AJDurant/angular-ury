@@ -28,12 +28,14 @@ angular.module('ury')
 
                 var searches = [];
 
+                // Run the searches for each enabled key
                 angular.forEach($scope.keys, function(enabled, key){
                     if (enabled) {
                         this.push(metaSearch(key, $scope.query));
                     }
                 }, searches);
 
+                // async wait for all searches to complete
                 $q.all(searches)
                 .then(
                     function (data) {
