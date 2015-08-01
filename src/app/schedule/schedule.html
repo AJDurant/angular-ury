@@ -20,7 +20,7 @@
     <div class="schedule-week">
         <div class="schedule-day" ng-repeat="day in schedule | filter:select">
             <h2 class="day-title"><a href="" ng-click="$parent.select.name = day.name">{{day.name}}</a></h2>
-            <schedule-item ng-repeat="item in day.shows" show="item"></schedule-item>
+            <list-item ng-repeat="show in day.shows" item="show"></list-item>
         </div>
     </div>
 

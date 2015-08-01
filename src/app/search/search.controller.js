@@ -40,6 +40,16 @@ angular.module('ury')
                         $scope.results.payload = $scope.results.payload.concat(data[0].payload, data[1].payload);
                         $scope.results.time = Math.max(data[0].time, data[1].time);
                     }
+                ).then(
+                    function () {
+                        angular.forEach($scope.results.payload, function(item){
+                            if (item.hasOwnProperty('show_id')) {
+                                item.brand = 'Show';
+                            } else if (item.hasOwnProperty('podcast_id')) {
+                                item.brand = 'Podcast';
+                            }
+                        });
+                    }
                 );
 
             };

@@ -6,12 +6,23 @@
 
     <div class="row">
         <form class="well form-search">
-                <label>Search:</label>
-                <input type="text" ng-model="keywords" class="input-medium search-query" placeholder="Keywords...">
-                <button type="submit" class="btn" ng-click="search()">Search</button>
-                <p class="help-block">Try for example: "php" or "angularjs" or "asdfg"</p>
-            </form>
-        <pre ng-model="results">{{results}}</pre>
+            <label>Search:</label>
+            <input type="text" ng-model="keywords" class="input-medium search-query" placeholder="Keywords...">
+            <button type="submit" class="btn" ng-click="search()">Search</button>
+            <p class="help-block">Try for example: "php" or "angularjs" or "ajsdf"</p>
+        </form>
+        <hr>
+<!--         <ul class="search-results">
+            <li ng-repeat="item in results.payload" class="search-result thumbnail">
+                <h3>{{item.title}}</h3>
+                <p ng-bind-html="item.description"></p>
+                <span ng-if="item.hasOwnProperty('show_id')">Show</span>
+                <span ng-if="item.hasOwnProperty('podcast_id')">Podcast</span>
+            </li>
+        </ul> -->
+        <list-item ng-repeat="result in results.payload" item="result"></list-item>
+        <hr>
+        <pre>{{results}}</pre>
     </div>
 
 </div>

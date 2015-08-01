@@ -1,0 +1,86 @@
+list-item {
+    position: relative;
+    display: block;
+    background-color: $schedule-bg;
+    overflow: hidden;
+    min-height: 120px;
+    padding-left: 120px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+
+    .list-item {
+        padding-left: 10px;
+
+        .item-title {
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    h1.item-title {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        margin: 0;
+        font-size: 1.5em;
+        opacity: .8;
+    }
+    span.item-brand {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        font-size: 2em;
+        line-height: 1em;
+        opacity: .1;
+        padding: 10px;
+        margin: 0;
+    }
+    img.item-img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        line-height: 120px;
+        min-height: 120px;
+        width: 120px;
+        text-align: center;
+    }
+}
+
+
+
+list-item[max-width~="500px"] {
+    min-height: 30px;
+    padding: 5px;
+
+    .item-time, .item-desc, .item-img, .item-brand {
+        display: none;
+    }
+    .item-title {
+        margin-top: 0;
+        font-size: 16px;
+    }
+}
+list-item[min-width="500px"] {
+    height: auto !important;
+}
+
+
+// Branding
+
+list-item.brand-jukebox {
+    background-color: lighten($schedule-bg, 3%);
+}
+list-item.brand-flagship {
+    background-color: #79CED6;
+}
+list-item.brand-news {
+    background-color: #FF726B;
+}
+list-item.brand-speech {
+    background-color: #5AD86A;
+}
+list-item.brand-event {
+    background-color: #FFB16B;
+}
