@@ -37,9 +37,15 @@ angular.module('ury')
                 $q.all(searches)
                 .then(
                     function (data) {
+                        var times = [];
+
                         $scope.results.status = 'OK';
-                        $scope.results.payload = $scope.results.payload.concat(data[0].payload, data[1].payload);
-                        $scope.results.time = Math.max(data[0].time, data[1].time);
+                        // Group payloads and get max time
+                        data.forEach(function (search) {
+                            $scope.results.payload = $scope.results.payload.concat(search.payload);
+                            times.push(search.time);
+                        });
+                        $scope.results.time = Math.max.apply(null, times);
                     }
                 ).then(
                     function () {
@@ -47,10 +53,10 @@ angular.module('ury')
 
                             item.brand = '';
 
+                            // Get 'brand' from XXXX_id in results eg. show_id, podcast_id
                             Object.keys(item).forEach(function (key) {
                                 var re = /(^[A-Za-z]*?)_id$/;
                                 if (re.test(key)) {
-                                    console.log('match: ' + key);
                                     item.brand = RegExp.$1;
                                 }
                             });
