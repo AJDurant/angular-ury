@@ -1,5 +1,14 @@
 <div class="jumbotron" ng-controller="HeaderCtrl">
-    <progressbar id="pageloading" class="progress-striped active" value="progress" ng-show="pageLoading"></progressbar>
+    <div id="cssload-loader" ng-show="uryStatus.loadCount > 0">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
     <div class="container">
         <div class="row clearfix">
             <div class="on-air col-md-5 col-md-offset-3">
