@@ -1,3 +1,10 @@
+#pageloading {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
 .on-air {
     h3 {
         margin-top: 27px;

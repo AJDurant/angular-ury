@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('ury')
-    .controller('MainCtrl', ['$scope', 'onAir', 'uryAPI',
-        function ($scope, onAir, uryAPI) {
+    .controller('MainCtrl', ['$scope', 'uryStatus', 'uryAPI',
+        function ($scope, uryStatus, uryAPI) {
 
         // Update with global status
-        $scope.onAir = onAir;
+        $scope.uryStatus = uryStatus;
 
         $scope.myInterval = 5000;
         var slides = $scope.slides = [];

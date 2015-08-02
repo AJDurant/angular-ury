@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ury')
-    .factory('uryAPI', ['$resource', function($resource) {
+    .factory('uryAPI', ['$resource', 'uryStatus', function ($resource, uryStatus) {
 
         /*
             The API factory sets up a $resource with the basic details (url, key) and the options passed into it.
@@ -22,11 +22,13 @@ angular.module('ury')
             );
 
             // toggle this call as loading here
+            uryStatus.loadCount += 1;
 
             var apiPromise = apiCall[func]().$promise;
 
             apiPromise.finally(function () {
                 // toggle this call as loaded
+                uryStatus.loadCount -= 1;
             });
 
             return apiPromise;
