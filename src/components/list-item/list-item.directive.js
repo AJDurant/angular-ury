@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ury')
-    .directive('listItem', ['$window', 'amDateFormatFilter', function($window, amDateFormat) {
+    .directive('listItem', ['$window', function($window) {
         return {
             restrict: 'E',
             scope: {

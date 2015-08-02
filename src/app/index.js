@@ -29,7 +29,7 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 templateUrl: 'app/shows/timeslot.html',
                 controller: 'TimeslotCtrl'
             })
-            .when('/uryplayer', {
+            .when('/uryplayer/podcasts', {
                 templateUrl: 'app/uryplayer/uryplayer.html',
                 controller: 'URYPlayerCtrl'
             })
