@@ -14,7 +14,7 @@ angular.module('ury')
                     {
                         module: key,
                         method: 'searchmeta',
-                        firstParam: query
+                        firstParam: query.replace(' ', '+')
                     }
                 );
             };
