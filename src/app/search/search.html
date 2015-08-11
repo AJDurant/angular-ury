@@ -32,11 +32,11 @@
     </form>
 
     <div id="search-results">
-        <list-item dir-paginate="result in results.payload | itemsPerPage: pageSize" current-page="currentPage" item="result"></list-item>
+        <list-item dir-paginate="result in results.payload | itemsPerPage: pageSize" pagination-id="search" current-page="currentPage" item="result"></list-item>
     </div>
 
     <div class="pull-right">
-        <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+        <dir-pagination-controls pagination-id="search" boundary-links="true"></dir-pagination-controls>
     </div>
 
 </div>
