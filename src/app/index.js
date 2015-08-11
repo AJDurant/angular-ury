@@ -9,6 +9,10 @@ angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRo
                 templateUrl: 'app/main/main.html',
                 controller: 'MainCtrl'
             })
+            .when('/listen', {
+                templateUrl: 'app/listen/listen.html',
+                controller: 'ListenCtrl'
+            })
             .when('/schedule', {
                 templateUrl: 'app/schedule/schedule.html',
                 controller: 'ScheduleCtrl'
