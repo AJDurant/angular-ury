@@ -4,6 +4,9 @@ angular.module('ury')
     .controller('URYPlayerCtrl', ['$scope', 'uryAPI',
         function ($scope, uryAPI) {
 
+            $scope.currentPage = 1;
+            $scope.pageSize = 10;
+
             uryAPI('get',
                 {
                     module: 'podcast',

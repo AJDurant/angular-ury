@@ -4,26 +4,39 @@
         <h1>Search</h1>
     </div>
 
-    <div class="row">
-        <form class="well form-search">
-            <div class="form-group">
-                <label for="search" class="sr-only control-label">Search:</label>
-                <input type="text" ng-model="query" class="form-control" id="search" placeholder="Keywords...">
-                <span class="help-block">Try for example: "Roses" or "Woodstock" or "Rock"</span>
+    <form class="well form-search">
+        <div class="form-group">
+            <label for="search" class="sr-only control-label">Search:</label>
+            <input type="text" ng-model="query" class="form-control" id="search" placeholder="Keywords...">
+            <span class="help-block">Try for example: "Roses" or "Woodstock" or "Rock"</span>
+        </div>
+
+        <div class="form-group">
+            <label class="checkbox-inline" ng-repeat="(key,enabled) in keys">
+                <input type="checkbox" ng-model="keys[key]"> {{key}}
+            </label>
+        </div>
+
+        <div class="row form-horizontal">
+            <div class="col-sm-4 col-sm-push-2 col-sm-offset-6">
+                <label class="control-label col-sm-8">Items per page:</label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="number" min="10" max="100" ng-model="pageSize">
+                </div>
             </div>
-
-            <div class="form-group">
-                <label class="checkbox-inline" ng-repeat="(key,enabled) in keys">
-                    <input type="checkbox" ng-model="keys[key]"> {{key}}
-                </label>
+            <div class="col-sm-2 col-sm-pull-10">
+                <button type="submit" class="btn btn-default" ng-click="search()">Search</button>
             </div>
+        </div>
 
-            <button type="submit" class="btn btn-default" ng-click="search()">Search</button>
+    </form>
 
-        </form>
+    <div id="search-results">
+        <list-item dir-paginate="result in results.payload | itemsPerPage: pageSize" current-page="currentPage" item="result"></list-item>
     </div>
-    <div id="search-results" class="row">
-        <list-item ng-repeat="result in results.payload" item="result"></list-item>
+
+    <div class="pull-right">
+        <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
     </div>
 
 </div>

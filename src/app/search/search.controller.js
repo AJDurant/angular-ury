@@ -4,6 +4,9 @@ angular.module('ury')
     .controller('SearchCtrl', ['$scope', '$q', 'uryAPI',
         function ($scope, $q, uryAPI) {
 
+            $scope.currentPage = 1;
+            $scope.pageSize = 10;
+
             $scope.keys = {
                 show: true,
                 podcast: true
