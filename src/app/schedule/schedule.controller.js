@@ -59,7 +59,7 @@ angular.module('ury')
                         schedule[dayIndex].shows.push(
                             {
                                 title: 'URY Jukebox',
-                                time: lastTime,
+                                time: lastTime.unix(),
                                 description: 'Non-stop Music',
                                 image: '',
                                 duration: time.diff(lastTime) / (60*60*1000),
@@ -71,10 +71,10 @@ angular.module('ury')
                     schedule[dayIndex].shows.push(
                         {
                             title: show.title,
-                            time: time,
+                            time: show.time,
                             description: show.description,
                             image: show.photo,
-                            url: '/schedule/shows/timeslots/' + show.id,
+                            micrositelink: {url: '/schedule/shows/timeslots/' + show.id},
                             duration: duration.asHours(),
                             brand: uryBrand.getBrand(show.title, time)
                         }

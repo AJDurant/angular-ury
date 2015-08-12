@@ -18,7 +18,13 @@ angular.module('ury')
 
             var apiCall = $resource(
                 apiURL + '/:module/:ID/:method/:firstParam', // specified params are in the URL
-                options // all other options are passed as data to the API
+                options, // all other options are passed as data to the API
+                {
+                    getCache: {
+                        method: 'GET',
+                        cache: true
+                    }
+                }
             );
 
             // toggle this call as loading here
