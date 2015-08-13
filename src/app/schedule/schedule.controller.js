@@ -16,6 +16,9 @@ angular.module('ury')
             $scope.weeknext = $window.moment(scheduleWeek).add(1, 'week').isoWeek();
 
             $scope.hours = [
+                '06:00',
+                '07:00',
+                '08:00',
                 '09:00',
                 '10:00',
                 '11:00',
@@ -36,10 +39,7 @@ angular.module('ury')
                 '02:00',
                 '03:00',
                 '04:00',
-                '05:00',
-                '06:00',
-                '07:00',
-                '08:00'
+                '05:00'
             ];
 
             $scope.noSchedule = false;
@@ -89,13 +89,30 @@ angular.module('ury')
 
                 if (Object.getOwnPropertyNames(data.payload).length > 0) {
                     for (var j = 1; j <= 7; j++) {
+
+                        var startOfDay = $window.moment(scheduleWeek).isoWeekday(j).startOf('day').add(6, 'h');
+                        var nextDay = $window.moment(startOfDay).add('1', 'day');
+
                         schedule[j] = {
                             name: $window.moment().isoWeekday(j).format('dddd'),
-                            lastTime: $window.moment(scheduleWeek).isoWeekday(j).startOf('day').add(9, 'h'),
+                            lastTime: $window.moment(startOfDay),
                             shows: []
                         };
 
                         data.payload[j].forEach(proccessShow, schedule[j]);
+
+                        if (schedule[j].lastTime.isBefore(nextDay)) {
+                            schedule[j].shows.push(
+                                {
+                                    title: 'URY Jukebox',
+                                    time: schedule[j].lastTime.unix(),
+                                    description: 'Non-stop Music',
+                                    image: '',
+                                    duration: nextDay.diff(schedule[j].lastTime) / 3600000,
+                                    brand: 'Jukebox'
+                                }
+                            );
+                        }
                     }
                 }
 
