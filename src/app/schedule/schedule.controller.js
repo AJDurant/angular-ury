@@ -7,13 +7,77 @@ angular.module('ury')
             $scope.year = $routeParams.year || $window.moment().isoWeekYear();
             $scope.week = $routeParams.week || $window.moment().isoWeek();
 
-            $scope.yearprev = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).subtract(1, 'week').isoWeekYear();
-            $scope.weekprev = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).subtract(1, 'week').isoWeek();
+            var scheduleWeek = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week);
 
-            $scope.yearnext = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).add(1, 'week').isoWeekYear();
-            $scope.weeknext = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week).add(1, 'week').isoWeek();
+            $scope.yearprev = $window.moment(scheduleWeek).subtract(1, 'week').isoWeekYear();
+            $scope.weekprev = $window.moment(scheduleWeek).subtract(1, 'week').isoWeek();
 
-            uryAPI('get',
+            $scope.yearnext = $window.moment(scheduleWeek).add(1, 'week').isoWeekYear();
+            $scope.weeknext = $window.moment(scheduleWeek).add(1, 'week').isoWeek();
+
+            $scope.hours = [
+                '09:00',
+                '10:00',
+                '11:00',
+                '12:00',
+                '13:00',
+                '14:00',
+                '15:00',
+                '16:00',
+                '17:00',
+                '18:00',
+                '19:00',
+                '20:00',
+                '21:00',
+                '22:00',
+                '23:00',
+                '00:00',
+                '01:00',
+                '02:00',
+                '03:00',
+                '04:00',
+                '05:00',
+                '06:00',
+                '07:00',
+                '08:00'
+            ];
+
+            $scope.noSchedule = false;
+
+            var proccessShow = function (show, index, arr) {
+                var time = $window.moment(show.time * 1000);
+                var duration = $window.moment.duration(show.duration);
+                var endTime = $window.moment(time).add(duration);
+
+                //Fill in the gap
+                if (this.lastTime.unix() !== time.unix()) {
+                    this.shows.push(
+                        {
+                            title: 'URY Jukebox',
+                            time: this.lastTime.unix(),
+                            description: 'Non-stop Music',
+                            image: '',
+                            duration: time.diff(this.lastTime) / 3600000,
+                            brand: 'Jukebox'
+                        }
+                    );
+                }
+
+                this.shows.push(
+                    {
+                        title: show.title,
+                        time: show.time,
+                        description: show.description,
+                        image: show.photo,
+                        micrositelink: {url: '/schedule/shows/timeslots/' + show.id},
+                        duration: duration.asHours(),
+                        brand: uryBrand.getBrand(show.title, time)
+                    }
+                );
+                this.lastTime = endTime;
+            };
+
+            uryAPI('getCache',
                 {
                     module: 'timeslot',
                     method: 'weekschedule',
@@ -22,66 +86,28 @@ angular.module('ury')
                 }
             ).then(function (data) {
                 var schedule = [];
-                var currentDay;
-                var dayIndex = -1;
-                var lastTime;
 
-                for (var i = 0; i < data.payload.length; i++) {
-                    var show = data.payload[i];
-                    var time = $window.moment(show.time * 1000);
-                    var duration = $window.moment.duration(show.duration);
-                    var endTime = $window.moment(time).add(duration);
-                    var showDay;
+                if (Object.getOwnPropertyNames(data.payload).length > 0) {
+                    for (var j = 1; j <= 7; j++) {
+                        schedule[j] = {
+                            name: $window.moment().isoWeekday(j).format('dddd'),
+                            lastTime: $window.moment(scheduleWeek).isoWeekday(j).startOf('day').add(9, 'h'),
+                            shows: []
+                        };
 
-                    // Start URY days at 9 am
-                    if (time.hour() < 9) {
-                        showDay = $window.moment(time).startOf('day').subtract(1, 'day').add(9, 'h');
-                    } else {
-                        showDay = $window.moment(time).startOf('day').add(9, 'h');
+                        data.payload[j].forEach(proccessShow, schedule[j]);
                     }
-
-                    if (!currentDay || !currentDay.isSame(showDay)) {
-                        if (!currentDay && showDay.isoWeekday() !== 1) {
-                            // Start week on Monday
-                            continue;
-                        }
-                        dayIndex += 1;
-                        if (dayIndex >= 7) {
-                            // Stop after 7 days
-                            break;
-                        }
-                        currentDay = showDay;
-                        lastTime = currentDay;
-                        schedule.push({name: currentDay.format('dddd'), shows: []});
-                    }
-                    //Fill in the gap
-                    if (lastTime.unix() !== time.unix()) {
-                        schedule[dayIndex].shows.push(
-                            {
-                                title: 'URY Jukebox',
-                                time: lastTime.unix(),
-                                description: 'Non-stop Music',
-                                image: '',
-                                duration: time.diff(lastTime) / (60*60*1000),
-                                brand: 'Jukebox'
-                            }
-                        );
-                    }
-
-                    schedule[dayIndex].shows.push(
-                        {
-                            title: show.title,
-                            time: show.time,
-                            description: show.description,
-                            image: show.photo,
-                            micrositelink: {url: '/schedule/shows/timeslots/' + show.id},
-                            duration: duration.asHours(),
-                            brand: uryBrand.getBrand(show.title, time)
-                        }
-                    );
-                    lastTime = endTime;
                 }
 
-                $scope.schedule = schedule.slice(0,7);
+                $scope.schedule = schedule.slice(1);
+
+            }).then(function () {
+                if ($scope.schedule.length > 0) {
+                    $scope.select = {
+                        name: ''
+                    };
+                } else {
+                    $scope.noSchedule = true;
+                }
             });
     }]);

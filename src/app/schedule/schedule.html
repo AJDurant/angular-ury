@@ -17,7 +17,13 @@
             <a ng-href="/schedule/{{yearnext}}/w{{weeknext}}">Next Week &raquo;</a>
         </div>
     </div>
+
+    <p ng-show="noSchedule">Sorry, but there are no shows scheduled for this week.</p>
+
     <div class="schedule-week">
+        <ol class="schedule-times">
+            <li ng-repeat="hour in hours" ng-show="select.name == ''">{{hour}}</li>
+        </ol>
         <div class="schedule-day" ng-repeat="day in schedule | filter:select">
             <h2 class="day-title"><a href="" ng-click="$parent.select.name = day.name">{{day.name}}</a></h2>
             <list-item ng-repeat="show in day.shows" item="show"></list-item>

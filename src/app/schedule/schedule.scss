@@ -6,6 +6,18 @@
     width: 100%;
 }
 
+ol.schedule-times {
+    margin-top: 63px;
+    padding: 0;
+    list-style: none;
+
+    li {
+        height: 60px;
+        border-bottom: 1px solid;
+        padding: 5px;
+    }
+}
+
 .schedule-day {
     display: flex;
     flex-direction: column;
