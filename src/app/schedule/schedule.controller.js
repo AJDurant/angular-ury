@@ -87,7 +87,7 @@ angular.module('ury')
             ).then(function (data) {
                 var schedule = [];
 
-                if (Object.getOwnPropertyNames(data.payload).length > 0) {
+                if (Object.keys(data.payload).length > 0) {
                     for (var j = 1; j <= 7; j++) {
 
                         var startOfDay = $window.moment(scheduleWeek).isoWeekday(j).startOf('day').add(6, 'h');
