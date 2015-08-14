@@ -11,9 +11,13 @@ angular.module('ury')
         var apiURL = 'https://ury.org.uk/api-aj/v2';
         var apiKey = '00687b83-73b2-43ee-8083-fcbd7811def6';
 
-        return function(func /*, options*/){
+        return function(func /*, options, postData*/){
             // get all extra paramerters passed in - these are used for the data object sent with the request
             var options = arguments[1] || {};
+            var postData = arguments[2] || {};
+
+            console.log(postData);
+
             options.api_key = apiKey;
 
             var apiCall = $resource(
@@ -30,7 +34,7 @@ angular.module('ury')
             // toggle this call as loading here
             uryStatus.loadCount += 1;
 
-            var apiPromise = apiCall[func]().$promise;
+            var apiPromise = apiCall[func](postData).$promise;
 
             apiPromise.finally(function () {
                 // toggle this call as loaded

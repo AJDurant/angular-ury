@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'angularMoment', 'angularUtils.directives.dirPagination'])
+angular.module('ury', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap', 'angularMoment', 'angularUtils.directives.dirPagination', 'vcRecaptcha'])
     .config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', function ($routeProvider, $locationProvider, $sceDelegateProvider) {
 
         // Set up application routes
