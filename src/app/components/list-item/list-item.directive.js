@@ -14,6 +14,6 @@ angular.module('ury')
                 element.addClass('brand-' + scope.item.brand.replace(/\W+/g, '-').toLowerCase());
                 $window.ElementQueries.init();
             },
-            templateUrl: 'components/list-item/list-item.html'
+            templateUrl: 'app/components/list-item/list-item.html'
         };
     }]);
