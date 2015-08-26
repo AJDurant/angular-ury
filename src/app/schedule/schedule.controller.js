@@ -1,130 +1,135 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .controller('ScheduleCtrl', ['$scope', '$routeParams', '$window', 'uryAPI', 'uryBrand',
-        function ($scope, $routeParams, $window, uryAPI, uryBrand) {
+    angular
+        .module('ury')
+        .controller('ScheduleCtrl', ScheduleCtrl);
 
-            $scope.year = $routeParams.year || $window.moment().isoWeekYear();
-            $scope.week = $routeParams.week || $window.moment().isoWeek();
+    /** @ngInject */
+    function ScheduleCtrl ($scope, $routeParams, $window, uryAPI, uryBrand) {
 
-            var scheduleWeek = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week);
+        $scope.year = $routeParams.year || $window.moment().isoWeekYear();
+        $scope.week = $routeParams.week || $window.moment().isoWeek();
 
-            $scope.yearprev = $window.moment(scheduleWeek).subtract(1, 'week').isoWeekYear();
-            $scope.weekprev = $window.moment(scheduleWeek).subtract(1, 'week').isoWeek();
+        var scheduleWeek = $window.moment($scope.year + '-W' + ($scope.week<10 ? '0' : '') + $scope.week);
 
-            $scope.yearnext = $window.moment(scheduleWeek).add(1, 'week').isoWeekYear();
-            $scope.weeknext = $window.moment(scheduleWeek).add(1, 'week').isoWeek();
+        $scope.yearprev = $window.moment(scheduleWeek).subtract(1, 'week').isoWeekYear();
+        $scope.weekprev = $window.moment(scheduleWeek).subtract(1, 'week').isoWeek();
 
-            $scope.hours = [
-                '06:00',
-                '07:00',
-                '08:00',
-                '09:00',
-                '10:00',
-                '11:00',
-                '12:00',
-                '13:00',
-                '14:00',
-                '15:00',
-                '16:00',
-                '17:00',
-                '18:00',
-                '19:00',
-                '20:00',
-                '21:00',
-                '22:00',
-                '23:00',
-                '00:00',
-                '01:00',
-                '02:00',
-                '03:00',
-                '04:00',
-                '05:00'
-            ];
+        $scope.yearnext = $window.moment(scheduleWeek).add(1, 'week').isoWeekYear();
+        $scope.weeknext = $window.moment(scheduleWeek).add(1, 'week').isoWeek();
 
-            $scope.noSchedule = false;
+        $scope.hours = [
+            '06:00',
+            '07:00',
+            '08:00',
+            '09:00',
+            '10:00',
+            '11:00',
+            '12:00',
+            '13:00',
+            '14:00',
+            '15:00',
+            '16:00',
+            '17:00',
+            '18:00',
+            '19:00',
+            '20:00',
+            '21:00',
+            '22:00',
+            '23:00',
+            '00:00',
+            '01:00',
+            '02:00',
+            '03:00',
+            '04:00',
+            '05:00'
+        ];
 
-            var proccessShow = function (show, index, arr) {
-                var time = $window.moment(show.time * 1000);
-                var duration = $window.moment.duration(show.duration);
-                var endTime = $window.moment(time).add(duration);
+        $scope.noSchedule = false;
 
-                //Fill in the gap
-                if (this.lastTime.unix() !== time.unix()) {
-                    this.shows.push(
-                        {
-                            title: 'URY Jukebox',
-                            time: this.lastTime.unix(),
-                            description: 'Non-stop Music',
-                            image: '',
-                            duration: time.diff(this.lastTime) / 3600000,
-                            brand: 'Jukebox'
-                        }
-                    );
-                }
+        var proccessShow = function (show, index, arr) {
+            var time = $window.moment(show.time * 1000);
+            var duration = $window.moment.duration(show.duration);
+            var endTime = $window.moment(time).add(duration);
 
+            //Fill in the gap
+            if (this.lastTime.unix() !== time.unix()) {
                 this.shows.push(
                     {
-                        title: show.title,
-                        time: show.time,
-                        description: show.description,
-                        image: show.photo,
-                        micrositelink: {url: '/schedule/shows/timeslots/' + show.id},
-                        duration: duration.asHours(),
-                        brand: uryBrand.getBrand(show.title, time)
+                        title: 'URY Jukebox',
+                        time: this.lastTime.unix(),
+                        description: 'Non-stop Music',
+                        image: '',
+                        duration: time.diff(this.lastTime) / 3600000,
+                        brand: 'Jukebox'
                     }
                 );
-                this.lastTime = endTime;
-            };
+            }
 
-            uryAPI('getCache',
+            this.shows.push(
                 {
-                    module: 'timeslot',
-                    method: 'weekschedule',
-                    firstParam: $scope.week,
-                    year: $scope.year
+                    title: show.title,
+                    time: show.time,
+                    description: show.description,
+                    image: show.photo,
+                    micrositelink: {url: '/schedule/shows/timeslots/' + show.id},
+                    duration: duration.asHours(),
+                    brand: uryBrand.getBrand(show.title, time)
                 }
-            ).then(function (data) {
-                var schedule = [];
+            );
+            this.lastTime = endTime;
+        };
 
-                if (Object.keys(data.payload).length > 0) {
-                    for (var j = 1; j <= 7; j++) {
+        uryAPI('getCache',
+            {
+                module: 'timeslot',
+                method: 'weekschedule',
+                firstParam: $scope.week,
+                year: $scope.year
+            }
+        ).then(function (data) {
+            var schedule = [];
 
-                        var startOfDay = $window.moment(scheduleWeek).isoWeekday(j).startOf('day').add(6, 'h');
-                        var nextDay = $window.moment(startOfDay).add('1', 'day');
+            if (Object.keys(data.payload).length > 0) {
+                for (var j = 1; j <= 7; j++) {
 
-                        schedule[j] = {
-                            name: $window.moment().isoWeekday(j).format('dddd'),
-                            lastTime: $window.moment(startOfDay),
-                            shows: []
-                        };
+                    var startOfDay = $window.moment(scheduleWeek).isoWeekday(j).startOf('day').add(6, 'h');
+                    var nextDay = $window.moment(startOfDay).add('1', 'day');
 
-                        data.payload[j].forEach(proccessShow, schedule[j]);
+                    schedule[j] = {
+                        name: $window.moment().isoWeekday(j).format('dddd'),
+                        lastTime: $window.moment(startOfDay),
+                        shows: []
+                    };
 
-                        if (schedule[j].lastTime.isBefore(nextDay)) {
-                            schedule[j].shows.push(
-                                {
-                                    title: 'URY Jukebox',
-                                    time: schedule[j].lastTime.unix(),
-                                    description: 'Non-stop Music',
-                                    image: '',
-                                    duration: nextDay.diff(schedule[j].lastTime) / 3600000,
-                                    brand: 'Jukebox'
-                                }
-                            );
-                        }
+                    data.payload[j].forEach(proccessShow, schedule[j]);
+
+                    if (schedule[j].lastTime.isBefore(nextDay)) {
+                        schedule[j].shows.push(
+                            {
+                                title: 'URY Jukebox',
+                                time: schedule[j].lastTime.unix(),
+                                description: 'Non-stop Music',
+                                image: '',
+                                duration: nextDay.diff(schedule[j].lastTime) / 3600000,
+                                brand: 'Jukebox'
+                            }
+                        );
                     }
                 }
+            }
 
-                $scope.schedule = schedule.slice(1);
+            $scope.schedule = schedule.slice(1);
 
-            }).then(function () {
-                if ($scope.schedule.length > 0) {
-                    $scope.select = {
-                        name: ''
-                    };
-                } else {
-                    $scope.noSchedule = true;
-                }
-            });
-    }]);
+        }).then(function () {
+            if ($scope.schedule.length > 0) {
+                $scope.select = {
+                    name: ''
+                };
+            } else {
+                $scope.noSchedule = true;
+            }
+        });
+    }
+})();

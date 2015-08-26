@@ -1,7 +1,12 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .controller('AboutCtrl', ['$scope',
-        function ($scope) {
+    angular
+        .module('ury')
+        .controller('AboutCtrl', AboutCtrl);
 
-}]);
+    /** @ngInject */
+    function AboutCtrl () {
+
+    }
+})();

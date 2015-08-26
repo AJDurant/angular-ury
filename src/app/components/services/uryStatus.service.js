@@ -1,11 +1,16 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-     // Global status for feature control across controllers
-    .service('uryStatus', function () {
+    angular
+        .module('ury')
+        .service('uryStatus', uryStatus);
+
+    // Global status for feature control across controllers
+    function uryStatus () {
         var serviceMembers = {
             onAir: false,
             loadCount: 0
         };
         return serviceMembers;
-    });
+    }
+})();

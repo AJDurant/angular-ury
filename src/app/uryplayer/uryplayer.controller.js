@@ -1,19 +1,23 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .controller('URYPlayerCtrl', ['$scope', 'uryAPI',
-        function ($scope, uryAPI) {
+    angular
+        .module('ury')
+        .controller('URYPlayerCtrl', URYPlayerCtrl);
 
-            $scope.currentPage = 1;
-            $scope.pageSize = 10;
+    /** @ngInject */
+    function URYPlayerCtrl ($scope, uryAPI) {
 
-            uryAPI('get',
-                {
-                    module: 'podcast',
-                    method: 'allpodcasts'
-                }
-            ).then(function (data) {
-                $scope.podcasts = data.payload;
-            });
+        $scope.currentPage = 1;
+        $scope.pageSize = 10;
 
-}]);
+        uryAPI('get',
+            {
+                module: 'podcast',
+                method: 'allpodcasts'
+            }
+        ).then(function (data) {
+            $scope.podcasts = data.payload;
+        });
+    }
+})();

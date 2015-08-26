@@ -1,27 +1,31 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .controller('GetInvolvedCtrl', ['$scope', 'uryAPI', 'vcRecaptchaService',
-        function ($scope, uryAPI, vcRecaptchaService) {
+    angular
+        .module('ury')
+        .controller('GetInvolvedCtrl', GetInvolvedCtrl);
 
-            $scope.submit = function() {
-                console.log($scope.user);
+    /** @ngInject */
+    function GetInvolvedCtrl ($scope, uryAPI, vcRecaptchaService) {
 
-                uryAPI('save', {
-                        module: 'user',
-                        method: 'createactivateapi',
-                    },
-                    angular.merge(
-                        $scope.user,
-                        {captcha: vcRecaptchaService.getResponse()}
-                    )
-                ).then(
-                    function (data) {
-                        console.log(data);
-                    },
-                    function (data) {
-                        console.log(data);
-                    }
-                );
-            };
-    }]);
+        $scope.submit = function() {
+
+            uryAPI('save', {
+                    module: 'user',
+                    method: 'createactivateapi',
+                },
+                angular.merge(
+                    $scope.user,
+                    {captcha: vcRecaptchaService.getResponse()}
+                )
+            ).then(
+                function (data) {
+                    console.log(data);
+                },
+                function (data) {
+                    console.log(data);
+                }
+            );
+        };
+    }
+})();

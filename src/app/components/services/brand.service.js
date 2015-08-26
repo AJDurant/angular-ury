@@ -1,7 +1,11 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .service('uryBrand', function() {
+    angular
+        .module('ury')
+        .service('uryBrand', uryBrand);
+
+    function uryBrand () {
         var flagship = /^URY\s?(Breakfast|Lunch|:PM)/i;
         var news = /^(URY (News|Sports|Football|Election)|Candidate Interview Night|Election Results Night|YUSU Election)/i;
         var speech = /^(URY Speech|YorWorld|In the Stalls|Screen|Stage|Game Breaking|Radio Drama)/i;
@@ -20,4 +24,5 @@ angular.module('ury')
 
             return '';
         };
-});
+    }
+})();

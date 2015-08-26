@@ -1,17 +1,22 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .controller('TeamCtrl', ['$scope', '$routeParams', 'uryAPI',
-        function ($scope, $routeParams, uryAPI) {
+    angular
+        .module('ury')
+        .controller('TeamCtrl', TeamCtrl);
 
-            uryAPI('get',
-                {
-                    module: 'team',
-                    method: 'byalias',
-                    firstParam: $routeParams.team,
-                    mixins: 'officers'
-                }
-            ).then(function (data) {
-                $scope.team = data.payload;
-            });
-}]);
+    /** @ngInject */
+    function TeamCtrl ($scope, $routeParams, uryAPI) {
+
+        uryAPI('get',
+            {
+                module: 'team',
+                method: 'byalias',
+                firstParam: $routeParams.team,
+                mixins: 'officers'
+            }
+        ).then(function (data) {
+            $scope.team = data.payload;
+        });
+    }
+})();

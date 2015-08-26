@@ -1,7 +1,12 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .factory('uryAPI', ['$resource', 'uryStatus', function ($resource, uryStatus) {
+    angular
+        .module('ury')
+        .factory('uryAPI', uryAPI);
+
+    /** @ngInject */
+    function uryAPI ($resource, uryStatus) {
 
         /*
             The API factory sets up a $resource with the basic details (url, key) and the options passed into it.
@@ -15,8 +20,6 @@ angular.module('ury')
             // get all extra paramerters passed in - these are used for the data object sent with the request
             var options = arguments[1] || {};
             var postData = arguments[2] || {};
-
-            console.log(postData);
 
             options.api_key = apiKey;
 
@@ -44,4 +47,5 @@ angular.module('ury')
             return apiPromise;
 
         };
-    }]);
+    }
+})();

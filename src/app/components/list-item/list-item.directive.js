@@ -1,7 +1,12 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .directive('listItem', ['$window', function($window) {
+    angular
+        .module('ury')
+        .directive('listItem', listItem);
+
+    /** @ngInject */
+    function listItem ($window) {
         return {
             restrict: 'E',
             scope: {
@@ -16,4 +21,5 @@ angular.module('ury')
             },
             templateUrl: 'app/components/list-item/list-item.html'
         };
-    }]);
+    }
+})();

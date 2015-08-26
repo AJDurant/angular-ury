@@ -1,8 +1,12 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .controller('MainCtrl', ['$scope', 'uryStatus', 'uryAPI',
-        function ($scope, uryStatus, uryAPI) {
+    angular
+        .module('ury')
+        .controller('MainCtrl', MainCtrl);
+
+    /** @ngInject */
+    function MainCtrl ($scope, uryStatus, uryAPI) {
 
         // Update with global status
         $scope.uryStatus = uryStatus;
@@ -30,4 +34,5 @@ angular.module('ury')
             $scope.teams = data.payload;
         });
 
-    }]);
+    }
+})();

@@ -1,7 +1,12 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('ury')
-    .controller('ListenCtrl', ['$scope',
-        function ($scope) {
+    angular
+        .module('ury')
+        .controller('ListenCtrl', ListenCtrl);
 
-}]);
+    /** @ngInject */
+    function ListenCtrl () {
+
+    }
+})();
