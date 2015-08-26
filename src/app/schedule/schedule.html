@@ -24,7 +24,7 @@
         <ol class="schedule-times">
             <li ng-repeat="hour in hours" ng-show="select.name == ''">{{hour}}</li>
         </ol>
-        <div class="schedule-day" ng-repeat="day in schedule | filter:select">
+        <div class="schedule-day" ng-repeat="day in schedule | filter:select" ng-animate>
             <h2 class="day-title"><a href="" ng-click="$parent.select.name = day.name">{{day.name}}</a></h2>
             <list-item ng-repeat="show in day.shows" item="show"></list-item>
         </div>
