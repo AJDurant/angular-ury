@@ -77,49 +77,9 @@
                 </fieldset>
                 <fieldset id="getinvolved-interest" class="col-md-6">
                     <legend>I'm interested in the…</legend>
-                        <div class="checkbox">
+                        <div class="checkbox" ng-repeat="team in teamLists">
                             <label>
-                                <input type="checkbox" name="interest" id="interest-news" value="24"> News Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-speech" value="28"> Speech Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-music" value="29"> Music Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-production" value="26"> Production Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-events" value="53"> Events Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-marketing" value="25"> Marketing Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-programming" value="27"> Presenting Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-engineering" value="22"> Engineering Team
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="interest" id="interest-computing" value="23"> Computing Team
+                                <input type="checkbox" name="interests[]" id="interest-{{team.id}}" value="{{team.value}}" ng-checked="teamSelection.indexOf(team.value) > -1" ng-click="toggleSelection(team.value)" > {{team.name}}
                             </label>
                         </div>
                 </fieldset>

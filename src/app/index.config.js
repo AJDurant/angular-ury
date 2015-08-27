@@ -6,7 +6,10 @@
     .config(config);
 
   /** @ngInject */
-  function config($locationProvider, $sceDelegateProvider) {
+  function config($logProvider, $locationProvider, $sceDelegateProvider) {
+
+    // Enable log
+    $logProvider.debugEnabled(true);
 
     // turn on AJAX loading with URLs
     $locationProvider.html5Mode(true).hashPrefix('!');

@@ -30,6 +30,9 @@
                     getCache: {
                         method: 'GET',
                         cache: true
+                    },
+                    put: {
+                        method: 'PUT'
                     }
                 }
             );
