@@ -6,7 +6,7 @@
         .controller('ScheduleCtrl', ScheduleCtrl);
 
     /** @ngInject */
-    function ScheduleCtrl ($scope, $routeParams, $window, uryAPI, uryBrand) {
+    function ScheduleCtrl ($scope, $routeParams, $window, uryAPI, uryBrand, $log) {
 
         $scope.year = $routeParams.year || $window.moment().isoWeekYear();
         $scope.week = $routeParams.week || $window.moment().isoWeek();
@@ -49,7 +49,7 @@
         $scope.noSchedule = false;
 
         var proccessShow = function (show, index, arr) {
-            var time = $window.moment(show.time * 1000);
+            var time = $window.moment.unix(show.time);
             var duration = $window.moment.duration(show.duration);
             var endTime = $window.moment(time).add(duration);
 
@@ -94,7 +94,7 @@
             if (Object.keys(data.payload).length > 0) {
                 for (var j = 1; j <= 7; j++) {
 
-                    var startOfDay = $window.moment(scheduleWeek).isoWeekday(j).startOf('day').add(6, 'h');
+                    var startOfDay = $window.moment(scheduleWeek).isoWeekday(j).startOf('day').hour(6);
                     var nextDay = $window.moment(startOfDay).add('1', 'day');
 
                     schedule[j] = {
@@ -103,7 +103,9 @@
                         shows: []
                     };
 
-                    data.payload[j].forEach(proccessShow, schedule[j]);
+                    if (data.payload[j] !== undefined) {
+                        data.payload[j].forEach(proccessShow, schedule[j]);
+                    }
 
                     if (schedule[j].lastTime.isBefore(nextDay)) {
                         schedule[j].shows.push(
@@ -121,6 +123,8 @@
             }
 
             $scope.schedule = schedule.slice(1);
+
+            $log.debug($scope.schedule);
 
         }).then(function () {
             if ($scope.schedule.length > 0) {
