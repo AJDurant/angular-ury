@@ -5,3 +5,12 @@ dl.dl-horizontal.dl-sm dt {
 dl.dl-horizontal.dl-sm dd {
     margin-left: 60px;
 }
+
+.carousel-indicators {
+    display: none;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    height: 300px;
+}

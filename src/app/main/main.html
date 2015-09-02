@@ -27,9 +27,12 @@
             </div>
         </div>
         <div class="col-md-9" style="height: 305px">
-            <carousel interval="myInterval" disable-animation="true">
+            <carousel interval="bannerInterval" disable-animation="true">
                 <slide ng-repeat="slide in slides" active="slide.active">
-                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                    <a ng-if="slide.target" ng-href="{{slide.target}}">
+                        <img ng-src="{{slide.url}}" alt="{{slide.alt}}" style="margin:auto;">
+                    </a>
+                    <img ng-if="!slide.target" ng-src="{{slide.url}}" alt="{{slide.alt}}" style="margin:auto;">
                 </slide>
             </carousel>
         </div>
