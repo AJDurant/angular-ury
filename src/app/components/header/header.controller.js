@@ -18,6 +18,7 @@
             $scope.show = data.payload;
             // Update global status
             $scope.uryStatus.onAir = (typeof $scope.show.current.url !== 'undefined');
+            $scope.uryStatus.timeslot = (typeof $scope.show.current.id !== 'undefined') ? $scope.show.current.id : null;
         });
     }
 })();

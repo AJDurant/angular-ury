@@ -8,6 +8,7 @@
         'ngSanitize',
         'ngResource',
         'ngRoute',
+        'ngMessages',
         'ui.bootstrap',
         'angularMoment',
         'angularUtils.directives.dirPagination',

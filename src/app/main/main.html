@@ -4,8 +4,8 @@
         <div class="col-md-3">
             <h2>Send a Message</h2>
             <div ng-if="uryStatus.onAir">
-                <form name="sendMessageForm" class="form-message" ng-submit="sendMessage()" novalidate>
-                    <div class="form-group" ng-class="{ 'has-error' : sendMessageForm.message.$invalid && !sendMessageForm.message.$pristine }">
+                <form name="sendMessageForm" class="form-message" ng-submit="sendMessage(sendMessageForm.$valid)" novalidate>
+                    <div class="form-group">
                         <label for="message" class="sr-only control-label">Message to send:</label>
                         <textarea
                             id="message"
@@ -13,7 +13,7 @@
                             class="form-control"
                             rows="5"
                             placeholder="Type your message here"
-                            ng-model="message"
+                            ng-model="$parent.comments"
                             required>
                         </textarea>
                     </div>

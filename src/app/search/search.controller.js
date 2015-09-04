@@ -16,6 +16,12 @@
             podcast: true
         };
 
+        $scope.results = {
+            status: '',
+            payload: [],
+            time: ''
+        };
+
         var metaSearch = function (key, query) {
             return uryAPI('get',
                 {
@@ -26,15 +32,9 @@
             );
         };
 
-        $scope.search = function () {
+        $scope.search = function (isValid) {
             // Only send if definitely valid
-            if ($scope.searchForm.$valid) {
-
-                $scope.results = {
-                    status: '',
-                    payload: [],
-                    time: ''
-                };
+            if (isValid) {
 
                 var searches = [];
 

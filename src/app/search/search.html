@@ -4,9 +4,9 @@
         <h1>Search</h1>
     </div>
 
-    <form name="searchForm" class="well form-search" ng-submit="search()" novalidate>
-        <div class="form-group" ng-class="{ 'has-error' : searchForm.message.$invalid && !searchForm.message.$pristine }">
-            <label for="search" class="sr-only control-label">Search:</label>
+    <form name="searchForm" class="well form-search" ng-submit="search(searchForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : searchForm.query.$invalid && searchForm.query.$touched }">
+            <label for="query" class="sr-only control-label">Search:</label>
             <input
                 type="text"
                 id="query"
@@ -39,11 +39,13 @@
     </form>
 
     <div id="search-results">
-        <list-item dir-paginate="result in results.payload | itemsPerPage: pageSize" pagination-id="search" current-page="currentPage" item="result"></list-item>
+        <div dir-paginate="result in results.payload | itemsPerPage: pageSize" pagination-id="searchPage" current-page="currentPage">
+            <list-item item="result"></list-item>
+        </div>
     </div>
 
     <div class="pull-right">
-        <dir-pagination-controls pagination-id="search" boundary-links="true"></dir-pagination-controls>
+        <dir-pagination-controls pagination-id="searchPage" boundary-links="true"></dir-pagination-controls>
     </div>
 
 </div>

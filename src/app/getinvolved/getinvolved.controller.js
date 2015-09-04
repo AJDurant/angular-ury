@@ -68,9 +68,9 @@
             }
         };
 
-        $scope.submit = function submit () {
+        $scope.submit = function submit (isValid) {
             // Only send if definitely valid
-            if ($scope.getInvolvedForm.$valid) {
+            if (isValid) {
                 uryAPI('save', {
                         module: 'user',
                         method: 'createactivateapi',

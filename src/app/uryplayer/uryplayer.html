@@ -4,7 +4,9 @@
         <h1>URY Player</h1>
     </div>
 
-    <list-item dir-paginate="podcast in podcasts | itemsPerPage: pageSize" pagination-id="podcasts" current-page="currentPage" item="podcast"></list-item>
+    <div dir-paginate="podcast in podcasts | itemsPerPage: pageSize" pagination-id="podcasts" current-page="currentPage">
+        <list-item item="podcast"></list-item>
+    </div>
 
     <div class="pull-right">
         <dir-pagination-controls pagination-id="podcasts" boundary-links="true"></dir-pagination-controls>

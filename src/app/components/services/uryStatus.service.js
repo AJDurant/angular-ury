@@ -9,6 +9,7 @@
     function uryStatus () {
         var serviceMembers = {
             onAir: false,
+            timeslot: null,
             loadCount: 0
         };
         return serviceMembers;
