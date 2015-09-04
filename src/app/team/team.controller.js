@@ -6,7 +6,9 @@
         .controller('TeamCtrl', TeamCtrl);
 
     /** @ngInject */
-    function TeamCtrl ($scope, $routeParams, uryAPI) {
+    function TeamCtrl ($scope, $routeParams, uryAPI, uryStatus) {
+
+        $scope.uryStatus = uryStatus;
 
         uryAPI('get',
             {
