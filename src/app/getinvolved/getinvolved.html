@@ -27,41 +27,77 @@
     <div class="col-md-6">
 
         <h2>Sign Up</h2>
-        <form>
+        <form name="getInvolvedForm" class="form-getinvolved" ng-submit="submit()" novalidate>
             <div class="row">
                 <fieldset id="getinvolved-personal-details" class="col-md-6">
                     <legend>I'm…</legend>
 
-                    <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input class="form-control" type="text" name="first-name" id="first-name" ng-model="user.fname" required>
+                    <div class="form-group" ng-class="{ 'has-error' : getInvolvedForm.fname.$invalid && !getInvolvedForm.fname.$pristine }">
+                        <label for="fname">First Name</label>
+                        <input
+                            type="text"
+                            id="fname"
+                            name="fname"
+                            class="form-control"
+                            ng-model="user.fname"
+                            required>
                     </div>
-                    <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input class="form-control" type="text" name="last-name" id="last-name" ng-model="user.sname" required>
+                    <div class="form-group" ng-class="{ 'has-error' : getInvolvedForm.sname.$invalid && !getInvolvedForm.sname.$pristine }">
+                        <label for="sname">Last Name</label>
+                        <input
+                            type="text"
+                            id="sname"
+                            name="sname"
+                            class="form-control"
+                            ng-model="user.sname"
+                            required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : getInvolvedForm.email.$invalid && !getInvolvedForm.email.$pristine }">
                         <label for="text">York Email</label>
                         <div class="input-group">
-                            <input class="form-control" type="text" name="email" id="email" placeholder="abc123" ng-model="user.eduroam" required>
+                            <input
+                                type="text"
+                                id="email"
+                                name="email"
+                                class="form-control"
+                                placeholder="abc123"
+                                ng-model="user.eduroam"
+                                ng-pattern="/[a-z]{2,}[0-9]+/"
+                                required>
                             <span class="input-group-addon">@york.ac.uk</span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : getInvolvedForm.phone.$invalid && !getInvolvedForm.phone.$pristine }">
                         <label for="phone">Phone Number (Optional)</label>
-                        <input class="form-control" type="text" name="phone" id="phone" ng-model="user.phone">
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            class="form-control"
+                            ng-model="user.phone"
+                            ng-pattern="/((\(?0\d{4}\)?\s?\d{3}\s?\d{3})|(\(?0\d{3}\)?\s?\d{3}\s?\d{4})|(\(?0\d{2}\)?\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?/">
                     </div>
-                    <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <select class="form-control" name="gender" id="gender" ng-model="user.sex">
+                    <div class="form-group" ng-class="{ 'has-error' : getInvolvedForm.sex.$invalid && !getInvolvedForm.sex.$pristine }">
+                        <label for="sex">Gender</label>
+                        <select
+                            id="sex"
+                            name="sex"
+                            class="form-control"
+                            ng-model="user.sex"
+                            required>
                             <option value="o">Other</option>
                             <option value="m">Male</option>
                             <option value="f">Female</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : getInvolvedForm.college.$invalid && !getInvolvedForm.college.$pristine }">
                         <label for="college">College</label>
-                        <select class="form-control" name="college" id="college" ng-model="user.collegeid">
+                        <select
+                            id="college"
+                            name="college"
+                            class="form-control"
+                            ng-model="user.collegeid"
+                            required>
                             <option value="10">Unknown</option>
                             <option value="1">Alcuin</option>
                             <option value="11">Constantine</option>
@@ -86,7 +122,7 @@
             </div>
             <div class="row">
                 <div class="col-md-7" vc-recaptcha key="'6LdcSgsTAAAAAIvQlXYN10pHecUFlyHQWYa6sjCc'"></div>
-                <button id="getinvolved-submit" class="btn-lg btn-primary col-md-5" type="submit" ng-click="submit()">Get Involved!</button>
+                <button id="getinvolved-submit" class="btn btn-lg btn-primary col-md-5" type="submit" ng-disabled="getInvolvedForm.$invalid">Get Involved!</button>
             </div>
         </form>
     </div>

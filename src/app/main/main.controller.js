@@ -12,6 +12,14 @@
         $scope.uryStatus = uryStatus;
         $scope.bannerInterval = 5000;
         $scope.slides = [];
+        $scope.message = '';
+
+        $scope.sendMessage = function () {
+            // Only send if definitely valid
+            if ($scope.sendMessageForm.$valid) {
+
+            }
+        };
 
         uryAPI('get',
             {

@@ -4,9 +4,20 @@
         <div class="col-md-3">
             <h2>Send a Message</h2>
             <div ng-if="uryStatus.onAir">
-                <form action="https://ury.org.uk/schedule/message-current-show/" name="message" method="post">
-                    <textarea id="comments" name="comments" class="form-control" rows="5" placeholder="Type your message here"></textarea>
-                    <button type="submit" class="btn btn-default btn-lg btn-block">Send Message</button>
+                <form name="sendMessageForm" class="form-message" ng-submit="sendMessage()" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : sendMessageForm.message.$invalid && !sendMessageForm.message.$pristine }">
+                        <label for="message" class="sr-only control-label">Message to send:</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            class="form-control"
+                            rows="5"
+                            placeholder="Type your message here"
+                            ng-model="message"
+                            required>
+                        </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default btn-lg btn-block" ng-disabled="sendMessageForm.$invalid">Send Message</button>
                 </form>
                 <br>
                 <dl class="dl-horizontal dl-sm">

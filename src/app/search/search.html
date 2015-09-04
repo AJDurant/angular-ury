@@ -4,10 +4,17 @@
         <h1>Search</h1>
     </div>
 
-    <form class="well form-search">
-        <div class="form-group">
+    <form name="searchForm" class="well form-search" ng-submit="search()" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : searchForm.message.$invalid && !searchForm.message.$pristine }">
             <label for="search" class="sr-only control-label">Search:</label>
-            <input type="text" ng-model="query" class="form-control" id="search" placeholder="Keywords...">
+            <input
+                type="text"
+                id="query"
+                name="query"
+                class="form-control"
+                placeholder="Keywords..."
+                ng-model="query"
+                required>
             <span class="help-block">Try for example: "Roses" or "Woodstock" or "Rock"</span>
         </div>
 
@@ -25,7 +32,7 @@
                 </div>
             </div>
             <div class="col-sm-2 col-sm-pull-10">
-                <button type="submit" class="btn btn-default" ng-click="search()">Search</button>
+                <button type="submit" class="btn btn-default" ng-disabled="searchForm.$invalid">Search</button>
             </div>
         </div>
 

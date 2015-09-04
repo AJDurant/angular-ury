@@ -69,37 +69,39 @@
         };
 
         $scope.submit = function submit () {
-
-            uryAPI('save', {
-                    module: 'user',
-                    method: 'createactivateapi',
-                },
-                angular.merge(
-                    $scope.user,
-                    {captcha: vcRecaptchaService.getResponse()}
-                )
-            ).then(
-                function (data) {
-                    $log.debug(data);
-                    return data;
-                },
-                function (data) {
-                    $log.debug(data);
-                }
-            ).then(
-                function (data) {
-                    for (var i = $scope.teamSelection.length - 1; i >= 0; i--) {
-                        uryAPI('put', {
-                            module: 'list',
-                            ID: $scope.teamSelection[i],
-                            method: 'optin'
-                        },
-                        {
-                            userid: data.payload.memberid
-                        });
+            // Only send if definitely valid
+            if ($scope.getInvolvedForm.$valid) {
+                uryAPI('save', {
+                        module: 'user',
+                        method: 'createactivateapi',
+                    },
+                    angular.merge(
+                        $scope.user,
+                        {captcha: vcRecaptchaService.getResponse()}
+                    )
+                ).then(
+                    function (data) {
+                        $log.debug(data);
+                        return data;
+                    },
+                    function (data) {
+                        $log.debug(data);
                     }
-                }
-            );
+                ).then(
+                    function (data) {
+                        for (var i = $scope.teamSelection.length - 1; i >= 0; i--) {
+                            uryAPI('put', {
+                                module: 'list',
+                                ID: $scope.teamSelection[i],
+                                method: 'optin'
+                            },
+                            {
+                                userid: data.payload.memberid
+                            });
+                        }
+                    }
+                );
+            }
         };
     }
 })();
