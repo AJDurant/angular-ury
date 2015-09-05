@@ -4,6 +4,7 @@ $flagship-bg: #79CED6;
 $news-bg: #FF726B;
 $speech-bg: #5AD86A;
 $event-bg: #FFB16B;
+$music-bg: #D2A7FF;
 
 @mixin bg-highlight ($colour) {
     background-color: $colour;
@@ -80,7 +81,7 @@ list-item[max-width~="60px"] {
 }
 
 list-item[max-width~="300px"] {
-    min-height: 30px;
+    min-height: 15px;
 
     padding: 0;
     .list-item {
@@ -117,4 +118,7 @@ list-item.brand-speech {
 }
 list-item.brand-event {
     @include bg-highlight($event-bg);
+}
+list-item.brand-music {
+    @include bg-highlight($music-bg);
 }

@@ -6,7 +6,7 @@
         .controller('ScheduleCtrl', ScheduleCtrl);
 
     /** @ngInject */
-    function ScheduleCtrl ($scope, $routeParams, $window, uryAPI, uryBrand, $log) {
+    function ScheduleCtrl ($scope, $routeParams, $window, uryAPI, uryBrand) {
 
         $scope.year = $routeParams.year || $window.moment().isoWeekYear();
         $scope.week = $routeParams.week || $window.moment().isoWeek();
@@ -123,8 +123,6 @@
             }
 
             $scope.schedule = schedule.slice(1);
-
-            $log.debug($scope.schedule);
 
         }).then(function () {
             if ($scope.schedule.length > 0) {
