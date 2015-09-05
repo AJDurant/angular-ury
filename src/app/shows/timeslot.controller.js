@@ -23,11 +23,12 @@
                 '&embed_type=widget_standard'+
                 '&feed=https://www.mixcloud.com'+$scope.timeslot.mixcloud_status+
                 '&hide_artwork='+
-                '&hide_cover='+
-                '&hide_tracklist='+
+                '&hide_cover=1'+
+                '&hide_tracklist=1'+
                 '&light='+
                 '&mini='+
                 '&replace=0'+
+                '&html5audio=1' +
                 '&stylecolor=';
             } else {
                 $scope.embed = false;
