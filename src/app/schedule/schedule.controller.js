@@ -73,7 +73,7 @@
                     time: show.time,
                     description: show.description,
                     image: show.photo,
-                    micrositelink: {url: '/schedule/shows/timeslots/' + show.id},
+                    micrositelink: {url: '/schedule/shows/timeslots/' + show.timeslot_id},
                     duration: duration.asHours(),
                     brand: uryBrand.getBrand(show.title, time)
                 }

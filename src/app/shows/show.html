@@ -15,7 +15,7 @@
             <h2>Seasons</h2>
             <ol>
                 <li ng-repeat="season in seasons">
-                    <a ng-href="/schedule/shows/seasons/{{season.id}}">
+                    <a ng-href="/schedule/shows/seasons/{{season.season_id}}">
                     {{season.first_time | amDateFormat: "MMMM Do YYYY"}} ({{season.num_episodes.value}} episodes)
                     </a>
                 </li>
