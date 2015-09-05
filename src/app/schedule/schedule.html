@@ -8,14 +8,12 @@
         <div class="pull-left">
             <a ng-href="/schedule/{{yearprev}}/w{{weekprev}}">&laquo; Previous Week</a>
         </div>
-        <span class="">
-            <a href="/schedule">This Week</a>
-            &#124;&nbsp;&#124;
-            <a href="" ng-click="select.name = ''">Week View</a>
-        </span>
         <div class="pull-right">
             <a ng-href="/schedule/{{yearnext}}/w{{weeknext}}">Next Week &raquo;</a>
         </div>
+        <span class="">
+            <a href="/schedule">This&nbsp;Week</a>&nbsp;&#124;&nbsp;&#124;&nbsp;<a href="" ng-click="select.name = ''">Week&nbsp;View</a>
+        </span>
     </div>
 
     <p ng-show="noSchedule">Sorry, but there are no shows scheduled for this week.</p>

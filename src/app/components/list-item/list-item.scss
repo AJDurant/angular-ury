@@ -1,21 +1,44 @@
 $schedule-bg: #eeeeee;
 
+$flagship-bg: #79CED6;
+$news-bg: #FF726B;
+$speech-bg: #5AD86A;
+$event-bg: #FFB16B;
+
+@mixin bg-highlight ($colour) {
+    background-color: $colour;
+    &:hover, &:focus {
+        background-color: rgba($colour, 0.7);
+    }
+}
+
 list-item {
     position: relative;
     display: block;
-    background-color: $schedule-bg;
     overflow: hidden;
     min-height: 120px;
     padding-left: 120px;
     padding-bottom: 20px;
     margin-bottom: 10px;
 
+    @include bg-highlight($schedule-bg);
+
     .list-item {
         padding-left: 10px;
+        display: block;
+        width: 100%;
+        height: 100%;
 
         .item-title {
             text-overflow: ellipsis;
             overflow: hidden;
+            margin-top: 25px;
+        }
+
+        .item-desc {
+            color: #333;
+            display: inline-block;
+            text-decoration: none;
         }
     }
 
@@ -50,21 +73,30 @@ list-item {
     }
 }
 
-
-
-list-item[max-width~="500px"] {
-    min-height: 30px;
-    padding: 5px;
-
-    .item-time, .item-desc, .item-img, .item-brand {
+list-item[max-width~="60px"] {
+    .item-title {
         display: none;
     }
-    .item-title {
-        margin-top: 0;
-        font-size: 16px;
+}
+
+list-item[max-width~="300px"] {
+    min-height: 30px;
+
+    padding: 0;
+    .list-item {
+        padding-top: 5px;
+        padding-right: 5px;
+
+        .item-time, .item-desc, .item-img, .item-brand {
+            display: none;
+        }
+        .item-title {
+            margin-top: 0;
+            font-size: 16px;
+        }
     }
 }
-list-item[min-width="500px"] {
+list-item[min-width="300px"] {
     height: auto !important;
 }
 
@@ -72,17 +104,17 @@ list-item[min-width="500px"] {
 // Branding
 
 list-item.brand-jukebox {
-    background-color: lighten($schedule-bg, 3%);
+    @include bg-highlight(lighten($schedule-bg, 3%));
 }
 list-item.brand-flagship {
-    background-color: #79CED6;
+    @include bg-highlight($flagship-bg);
 }
 list-item.brand-news {
-    background-color: #FF726B;
+    @include bg-highlight($news-bg);
 }
 list-item.brand-speech {
-    background-color: #5AD86A;
+    @include bg-highlight($speech-bg);
 }
 list-item.brand-event {
-    background-color: #FFB16B;
+    @include bg-highlight($event-bg);
 }
