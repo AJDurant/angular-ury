@@ -1,7 +1,13 @@
 
-<footer class"footer" ng-controller="FooterCtrl">
+<footer class="footer" ng-controller="FooterCtrl">
     <div class="container">
         <hr>
-        <p class="text-muted">Copyright &copy; 1967-{{year}} University Radio York</p>
+        <p class="pull-left text-muted">Copyright &copy; 1967-{{year}} University Radio York</p>
+        <nav class="pull-right">
+            <ul class="inline">
+                <li><a ng-href="/contact">Contact Us</a></li>
+                <li><a href="https://www.york.ac.uk/about/legal-statements/">Disclaimer</a></li>
+            </ul>
+        </nav>
     </div>
 </footer>

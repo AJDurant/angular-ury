@@ -64,6 +64,10 @@
             templateUrl: 'app/search/search.html',
             controller: 'SearchCtrl'
         })
+        .when('/contact', {
+            templateUrl: 'app/contact/contact.html',
+            controller: 'ContactCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });
