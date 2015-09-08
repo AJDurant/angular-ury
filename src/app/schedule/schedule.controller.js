@@ -60,7 +60,7 @@
                         title: 'URY Jukebox',
                         time: this.lastTime.unix(),
                         description: 'Non-stop Music',
-                        image: '',
+                        photo: '',
                         duration: time.diff(this.lastTime) / 3600000,
                         brand: 'Jukebox'
                     }
@@ -72,7 +72,7 @@
                     title: show.title,
                     time: show.time,
                     description: show.description,
-                    image: show.photo,
+                    photo: show.photo,
                     micrositelink: {url: '/schedule/shows/timeslots/' + show.timeslot_id},
                     duration: duration.asHours(),
                     brand: uryBrand.getBrand(show.title, time)
@@ -113,7 +113,7 @@
                                 title: 'URY Jukebox',
                                 time: schedule[j].lastTime.unix(),
                                 description: 'Non-stop Music',
-                                image: '',
+                                photo: '',
                                 duration: nextDay.diff(schedule[j].lastTime) / 3600000,
                                 brand: 'Jukebox'
                             }

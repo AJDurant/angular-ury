@@ -62,7 +62,7 @@ list-item {
         padding: 10px;
         margin: 0;
     }
-    img.item-img {
+    div.item-img {
         position: absolute;
         left: 0;
         top: 0;
@@ -71,6 +71,16 @@ list-item {
         min-height: 120px;
         width: 120px;
         text-align: center;
+
+        img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            max-height: 100%;
+            max-width: 120px;
+        }
     }
 }
 

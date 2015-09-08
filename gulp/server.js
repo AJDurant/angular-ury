@@ -35,7 +35,10 @@ function browserSyncInit(baseDir, browser) {
    */
   // server.middleware = proxyMiddleware('/users', {target: 'http://jsonplaceholder.typicode.com', proxyHost: 'jsonplaceholder.typicode.com'});
 
-  server.middleware = proxyMiddleware('/media', {target: 'http://ury.org.uk'});
+  server.middleware = [
+    proxyMiddleware('/media', {target: 'http://ury.org.uk'}),
+    proxyMiddleware('/static', {target: 'http://ury.org.uk'})
+  ];
 
   browserSync.instance = browserSync.init({
     startPath: '/',
