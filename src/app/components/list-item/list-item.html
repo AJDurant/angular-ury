@@ -1,7 +1,7 @@
-<a class="list-item" ng-href="{{item.micrositelink.url}}" title="{{item.title}}">
+<div class="list-item">
     <h1 class="item-time">{{item.time * 1000 | amDateFormat: "HH:mm DD/MM/YYYY"}}</h1>
     <h2 class="item-title">{{item.title}}</h2>
     <p class="item-desc" ng-bind-html="item.description"></p>
     <div class="item-img"><img ng-src="{{item.photo}}"></div>
     <span class="item-brand">{{item.brand}}</span>
-</a>
+</div>

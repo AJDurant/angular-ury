@@ -5,7 +5,7 @@
     </div>
 
     <div dir-paginate="podcast in podcasts | itemsPerPage: pageSize" pagination-id="podcasts" current-page="currentPage">
-        <list-item item="podcast"></list-item>
+        <a list-item class="list-object" item="podcast" ng-href="{{podcast.micrositelink.url}}" title="{{podcast.title}}"></a>
     </div>
 
     <div class="pull-right">

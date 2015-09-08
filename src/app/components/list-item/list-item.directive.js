@@ -8,7 +8,7 @@
     /** @ngInject */
     function listItem ($window) {
         return {
-            restrict: 'E',
+            restrict: 'A',
             scope: {
                 item: '=item'
             },

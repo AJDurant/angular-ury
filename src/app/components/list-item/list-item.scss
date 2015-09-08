@@ -1,9 +1,5 @@
 $schedule-bg: #eeeeee;
 
-$flagship-bg: #79CED6;
-$news-bg: #FF726B;
-$speech-bg: #5AD86A;
-$event-bg: #FFB16B;
 $music-bg: #D2A7FF;
 
 @mixin bg-highlight ($colour) {
@@ -13,7 +9,7 @@ $music-bg: #D2A7FF;
     }
 }
 
-list-item {
+.list-object {
     position: relative;
     display: block;
     overflow: hidden;
@@ -21,8 +17,6 @@ list-item {
     padding-left: 120px;
     padding-bottom: 20px;
     margin-bottom: 10px;
-
-    @include bg-highlight($schedule-bg);
 
     .list-item {
         padding-left: 10px;
@@ -37,7 +31,6 @@ list-item {
         }
 
         .item-desc {
-            color: #333;
             display: inline-block;
             text-decoration: none;
         }
@@ -84,15 +77,15 @@ list-item {
     }
 }
 
-list-item[max-width~="60px"] {
+.list-object[max-width~="60px"] {
     .item-title {
         display: none;
     }
 }
 
-list-item[max-width~="300px"] {
+.list-object[max-width~="300px"] {
     min-height: 15px;
-
+    margin-bottom: 0;
     padding: 0;
     .list-item {
         padding-top: 5px;
@@ -107,28 +100,30 @@ list-item[max-width~="300px"] {
         }
     }
 }
-list-item[min-width="300px"] {
+.list-object[min-width="300px"] {
     height: auto !important;
 }
 
 
 // Branding
-
-list-item.brand-jukebox {
-    @include bg-highlight(lighten($schedule-bg, 3%));
+.brand- {
+    @extend .btn-link;
 }
-list-item.brand-flagship {
-    @include bg-highlight($flagship-bg);
+.brand-jukebox {
+    @extend .btn-default;
 }
-list-item.brand-news {
-    @include bg-highlight($news-bg);
+.brand-flagship {
+    @extend .btn-primary;
 }
-list-item.brand-speech {
-    @include bg-highlight($speech-bg);
+.brand-news {
+    @extend .btn-danger;
 }
-list-item.brand-event {
-    @include bg-highlight($event-bg);
+.brand-speech {
+    @extend .btn-success;
 }
-list-item.brand-music {
-    @include bg-highlight($music-bg);
+.brand-event {
+    @extend .btn-warning;
+}
+.brand-music {
+    @extend .btn-info
 }

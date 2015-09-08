@@ -40,7 +40,7 @@
 
     <div id="search-results">
         <div dir-paginate="result in results.payload | itemsPerPage: pageSize" pagination-id="searchPage" current-page="currentPage">
-            <list-item item="result"></list-item>
+            <a list-item class="list-object" item="result" ng-href="{{result.micrositelink.url}}" title="{{result.title}}"></a>
         </div>
     </div>
 
