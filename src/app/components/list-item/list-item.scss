@@ -1,13 +1,3 @@
-$schedule-bg: #eeeeee;
-
-$music-bg: #D2A7FF;
-
-@mixin bg-highlight ($colour) {
-    background-color: $colour;
-    &:hover, &:focus {
-        background-color: rgba($colour, 0.7);
-    }
-}
 
 .list-object {
     position: relative;
@@ -51,7 +41,7 @@ $music-bg: #D2A7FF;
         z-index: 0;
         font-size: 2em;
         line-height: 1em;
-        opacity: .1;
+        opacity: .2;
         padding: 10px;
         margin: 0;
     }
