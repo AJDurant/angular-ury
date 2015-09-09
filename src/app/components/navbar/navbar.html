@@ -1,45 +1,39 @@
-<div class="navbar-wrapper">
-
+<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">University Radio York</a>
-                </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">University Radio York</a>
+        </div>
 
-                <div class="collapse navbar-collapse" collapse="navCollapsed">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a ng-href="/schedule">Schedule</a></li>
-                        <li><a ng-href="/getinvolved">Get Involved</a></li>
-                        <li><a ng-href="/uryplayer/podcasts">URY Player</a></li>
-                        <li class="dropdown" dropdown>
-                            <a href class="dropdown-toggle" dropdown-toggle>Teams <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a ng-href="/team/presenting">Presenting</a></li>
-                                <li><a ng-href="/team/news">News</a></li>
-                                <li><a ng-href="/team/speech">Speech</a></li>
-                                <li><a ng-href="/team/music">Music</a></li>
-                                <li class="divider"></li>
-                                <li><a ng-href="/team/engineering">Engineering</a></li>
-                                <li><a ng-href="/team/computing">Computing</a></li>
-                                <li><a ng-href="/team/events">Events</a></li>
-                                <li><a ng-href="/team/production">Production</a></li>
-                                <li><a ng-href="/team/marketing">Marketing</a></li>
-                            </ul>
-                        </li>
-                        <li><a ng-href="/about">About</a></li>
-                        <li><a ng-href="/search">Search</a></li>
-                        <li><a href="https://ury.org.uk/myradio">MyRadio</a></li>
+        <div class="collapse navbar-collapse" collapse="navCollapsed">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ng-href="/schedule">Schedule</a></li>
+                <li><a ng-href="/getinvolved">Get Involved</a></li>
+                <li><a ng-href="/uryplayer/podcasts">URY Player</a></li>
+                <li class="dropdown" dropdown>
+                    <a href class="dropdown-toggle" dropdown-toggle>Teams <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-href="/team/presenting">Presenting</a></li>
+                        <li><a ng-href="/team/news">News</a></li>
+                        <li><a ng-href="/team/speech">Speech</a></li>
+                        <li><a ng-href="/team/music">Music</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-href="/team/engineering">Engineering</a></li>
+                        <li><a ng-href="/team/computing">Computing</a></li>
+                        <li><a ng-href="/team/events">Events</a></li>
+                        <li><a ng-href="/team/production">Production</a></li>
+                        <li><a ng-href="/team/marketing">Marketing</a></li>
                     </ul>
-                </div>
-            </div>
-        </nav>
+                </li>
+                <li><a ng-href="/about">About</a></li>
+                <li><a ng-href="/search">Search</a></li>
+                <li><a href="https://ury.org.uk/myradio">MyRadio</a></li>
+            </ul>
+        </div>
     </div>
-
-</div>
+</nav>
